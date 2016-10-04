@@ -18,7 +18,8 @@ dependencies {
     compile group: 'com.badlogicgames.gdx', name: 'gdx-box2d', version: '1.9.4'
     compile group: 'com.badlogicgames.gdx', name: 'gdx-box2d-platform', version: '1.9.4'
     compile group: 'com.badlogicgames.gdx', name: 'gdx-box2d-gwt', version: '1.9.4'
-    compile group: 'com.badlogicgames.gdx', name: 'gdx-box2d-gwt', version: '1.9.4'
+    compile group: 'org.yaml', name: 'snakeyaml', version: '1.17'
+    compile group: 'com.esotericsoftware.yamlbeans', name: 'yamlbeans', version: '1.09'
     compile "com.badlogicgames.gdx:gdx-platform:1.9.4:natives-desktop"
     compile "com.badlogicgames.gdx:gdx-box2d-platform:1.9.4:natives-desktop"
 

@@ -10,10 +10,8 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.BodyDef;
-import com.badlogic.gdx.physics.box2d.Box2D;
 import com.badlogic.gdx.physics.box2d.World;
 
 public class Game extends ApplicationAdapter {
@@ -42,9 +40,9 @@ public class Game extends ApplicationAdapter {
         this.bodyDef = new BodyDef();
         bodyDef.type = BodyDef.BodyType.DynamicBody;
         bodyDef.position.set(100,300);
-        world = new World(new Vector2(0, -10), true);
-        Body body = world.createBody(bodyDef);
-        world.step(1/60f, 6, 2);
+//        world = new World(new Vector2(0, -10), true);
+//        Body body = world.createBody(bodyDef);
+//        world.step(1/60f, 6, 2);
 
     }
 
@@ -54,7 +52,6 @@ public class Game extends ApplicationAdapter {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         batch.setProjectionMatrix(camera.combined);
         batch.begin();
-        System.out.println(bodyDef.position.x);
         batch.draw(img, bucket.x, bucket.y);
         camera.update();
         batch.end();

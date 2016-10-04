@@ -1,14 +1,17 @@
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
 import game.Game;
+import helper.Config;
 
 public class Launcher {
 
 	public static void main (String[] arg) {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
-		config.width = 800;
-		config.height = 400;
-		config.title = "NoodleJump";
+		Config gameConfig = Config.getInstance();
+//		System.out.println(gameConfig.());
+		config.width = gameConfig.getProperties().getWidth();
+		config.height = gameConfig.getProperties().getHeight();
+		config.title = gameConfig.getProperties().getTitle();
 		new LwjglApplication(new Game(), config);
 	}
 }
