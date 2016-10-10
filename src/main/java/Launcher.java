@@ -8,7 +8,7 @@ public class Launcher {
 	public static void main (String[] arg) {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
 		Config gameConfig = Config.getInstance();
-//		System.out.println(gameConfig.());
+		config.resizable = false;
 		config.width = gameConfig.getProperties().getWidth();
 		config.height = gameConfig.getProperties().getHeight();
 		config.title = gameConfig.getProperties().getTitle();

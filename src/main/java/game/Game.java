@@ -27,13 +27,13 @@ public class Game extends ApplicationAdapter {
     public void create() {
         batch = new SpriteBatch();
         img = new Texture("assets/images/batman.png");
-//        music = Gdx.audio.newMusic(Gdx.files.internal("assets/background.mp3"));
-//        music.setLooping(true);
-//        music.play();
+        music = Gdx.audio.newMusic(Gdx.files.internal("assets/batman.mp3"));
+        music.setLooping(true);
+
         camera = new OrthographicCamera();
-        camera.setToOrtho(false, 800, 480);
+        camera.setToOrtho(false, 400, 800);
         bucket = new Rectangle();
-        bucket.x = 800 / 2 - 64 / 2;
+        bucket.x = 400 / 2 - 64 / 2;
         bucket.y = 20;
         bucket.width = 47;
         bucket.height = 83;
@@ -48,6 +48,7 @@ public class Game extends ApplicationAdapter {
 
     @Override
     public void render() {
+        music.play();
         Gdx.gl.glClearColor(0, 0, 0.2f, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         batch.setProjectionMatrix(camera.combined);
@@ -55,10 +56,10 @@ public class Game extends ApplicationAdapter {
         batch.draw(img, bucket.x, bucket.y);
         camera.update();
         batch.end();
-        if(Gdx.input.isKeyPressed(Input.Keys.LEFT)) bucket.x -= 200 * Gdx.graphics.getDeltaTime();
-        if(Gdx.input.isKeyPressed(Input.Keys.RIGHT)) bucket.x += 200 * Gdx.graphics.getDeltaTime();
-        if(Gdx.input.isKeyPressed(Input.Keys.UP)) bucket.y += 200 * Gdx.graphics.getDeltaTime();
-        if(Gdx.input.isKeyPressed(Input.Keys.DOWN)) bucket.y -= 200 * Gdx.graphics.getDeltaTime();
+        if(Gdx.input.isKeyPressed(Input.Keys.LEFT)) bucket.x -= 400 * Gdx.graphics.getDeltaTime();
+        if(Gdx.input.isKeyPressed(Input.Keys.RIGHT)) bucket.x += 400 * Gdx.graphics.getDeltaTime();
+        if(Gdx.input.isKeyPressed(Input.Keys.UP)) bucket.y += 400 * Gdx.graphics.getDeltaTime();
+        if(Gdx.input.isKeyPressed(Input.Keys.DOWN)) bucket.y -= 400 * Gdx.graphics.getDeltaTime();
     }
 
     @Override
