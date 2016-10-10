@@ -26,17 +26,16 @@ public class Game extends ApplicationAdapter {
     @Override
     public void create() {
         batch = new SpriteBatch();
-        img = new Texture("assets/images/batman.png");
+        img = new Texture("assets/images/gangsta.png");
         music = Gdx.audio.newMusic(Gdx.files.internal("assets/batman.mp3"));
         music.setLooping(true);
-
         camera = new OrthographicCamera();
         camera.setToOrtho(false, 400, 800);
         bucket = new Rectangle();
-        bucket.x = 400 / 2 - 64 / 2;
+        bucket.x = 200 / 2 - 64 / 2;
         bucket.y = 20;
-        bucket.width = 47;
-        bucket.height = 83;
+        bucket.width = 20;
+        bucket.height = 40;
         this.bodyDef = new BodyDef();
         bodyDef.type = BodyDef.BodyType.DynamicBody;
         bodyDef.position.set(100,300);
