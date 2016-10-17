@@ -9,7 +9,7 @@ public abstract class AbstractSprite extends AbstractCollidable implements ISpri
     protected int spriteWidth;
     protected int spriteHeight;
 
-
+//TODO Rename getters
     public int width() {
         return spriteWidth;
     }
