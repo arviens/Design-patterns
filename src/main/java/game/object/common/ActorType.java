@@ -5,6 +5,5 @@ package game.object.common;
  */
 public enum ActorType {
     PLAYER,
-    ENEMY,
-    OBSTACLE
+    ENEMY
 }
