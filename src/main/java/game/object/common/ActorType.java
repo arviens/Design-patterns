@@ -1,7 +1,7 @@
 package game.object.common;
 
 /**
- * Saves Actor type
+ * Saves AbstractActor type
  */
 public enum ActorType {
     PLAYER,

@@ -3,7 +3,7 @@ package game.object.common;
 /**
  * Abstract class which contains fields of all game objects
  */
-public abstract class Actor extends AbstractCollidable {
+public abstract class AbstractActor extends AbstractCollidable {
     private int health;
     private float speed;
     private ActorType type;
