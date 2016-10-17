@@ -9,7 +9,6 @@ import game.sound.AbstractSound;
  * Stores information about player
  */
 public abstract class AbstractPlayer extends AbstractActor {
-    //TODO keyboard, sound
     private AbstractSound bounceSound;
     private Keyboard keyboard;
     private AbstractWeapon weapon;

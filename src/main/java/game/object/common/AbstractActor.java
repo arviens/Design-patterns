@@ -1,5 +1,7 @@
 package game.object.common;
 
+import game.object.sprite.AbstractSprite;
+
 /**
  * Abstract class which contains fields of all game objects
  */
@@ -7,6 +9,7 @@ public abstract class AbstractActor extends AbstractCollidable {
     private int health;
     private float speed;
     private ActorType type;
+    private AbstractSprite sprite;
 
     public int getHealth() {
         return health;
