@@ -2,6 +2,7 @@ package game.object.player;
 
 
 import game.object.common.AbstractActor;
+import game.object.weapon.AbstractWeapon;
 import game.sound.AbstractSound;
 
 /**
@@ -10,9 +11,8 @@ import game.sound.AbstractSound;
 public abstract class AbstractPlayer extends AbstractActor {
     //TODO keyboard, sound
     private AbstractSound bounceSound;
-
     private Keyboard keyboard;
-
+    private AbstractWeapon weapon;
     private int score;
 
     public AbstractSound getBounceSound() {
@@ -37,5 +37,13 @@ public abstract class AbstractPlayer extends AbstractActor {
 
     public void setScore(int score) {
         this.score = score;
+    }
+
+    public AbstractWeapon getWeapon() {
+        return weapon;
+    }
+
+    public void setWeapon(AbstractWeapon weapon) {
+        this.weapon = weapon;
     }
 }
