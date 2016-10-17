@@ -9,7 +9,7 @@ public abstract class AbstractSound {
     protected boolean loaded = false;
 
     protected final String file;
-
+// TODO consider sound file vs string
     protected AbstractSound(String file) {
         this.file = file;
         if (helper.Config.getInstance().getProperties().getVolume() == 0) {
