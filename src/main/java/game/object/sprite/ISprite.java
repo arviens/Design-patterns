@@ -10,5 +10,5 @@ public interface ISprite {
     int width();
 
     int height();
-    //TODO flip horizontal ant vertical
+    //TODO flip horizontal ant vertical a
 }
