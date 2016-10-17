@@ -5,6 +5,16 @@ public class GameProperties {
     private int width;
     private int height;
 
+    public int getVolume() {
+        return volume;
+    }
+
+    public void setVolume(int volume) {
+        this.volume = volume;
+    }
+
+    private int volume;
+
     public String getTitle() {
         return title;
     }
