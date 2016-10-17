@@ -1,6 +1,7 @@
 package game.object.item;
 
 import game.object.common.AbstractCollidable;
+import game.sound.AbstractSound;
 
 /**
  * Stores information about item
@@ -11,6 +12,10 @@ public abstract class AbsractItem extends AbstractCollidable {
     //What kind of enhancement item will give to user
     private Enhancement enhancement;
 
-//    private ??
+    //What kind of influence
+    private int influence;
+
+    private AbstractSound pickUpSound;
 
 }
+

@@ -12,16 +12,17 @@ public abstract class AbstractSound {
 
     protected AbstractSound(String file) {
         this.file = file;
-        if(helper.Config.getInstance().getProperties().getVolume() == 0) {
-                volume = 0;
-            } else {
-                volume = helper.Config.getInstance().getProperties().getVolume();
-            }
+        if (helper.Config.getInstance().getProperties().getVolume() == 0) {
+            volume = 0;
+        } else {
+            volume = helper.Config.getInstance().getProperties().getVolume();
         }
+    }
+
     public abstract void play();
 
     public String getFile() {
         return file;
     }
-    }
+}
 
