@@ -62,7 +62,7 @@ public class Game extends ApplicationAdapter {
     @Override
     public void dispose() {
         batch.dispose();
-        music.dispose();
+//        music.dispose();
         img.dispose();
     }
 }
