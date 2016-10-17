@@ -26,7 +26,7 @@ public class Game extends ApplicationAdapter {
         batch = new SpriteBatch();
         img = new Texture("assets/images/batman.png");
 //        music = Gdx.audio.newMusic(Gdx.files.internal("assets/batman.mp3"));
-        music.setLooping(true);
+//        music.setLooping(true);
         camera = new OrthographicCamera();
         camera.setToOrtho(false, 400, 800);
         bucket = new Rectangle();
@@ -35,7 +35,7 @@ public class Game extends ApplicationAdapter {
         bucket.width = 20;
         bucket.height = 40;
         this.bodyDef = new BodyDef();
-        music.play();
+        //music.play();
         bodyDef.type = BodyDef.BodyType.DynamicBody;
         bodyDef.position.set(100,300);
 //        world = new World(new Vector2(0, -10), true);
