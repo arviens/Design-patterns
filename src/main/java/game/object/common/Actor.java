@@ -1,10 +1,14 @@
 package game.object.common;
 
+/**
+ * Abstract class which contains fields of all game objects
+ */
 public abstract class Actor {
     private int health;
     private float x;
     private float y;
     private float speed;
+    private ActorType type;
 
     public int getHealth() {
         return health;
@@ -36,5 +40,13 @@ public abstract class Actor {
 
     public void setSpeed(float speed) {
         this.speed = speed;
+    }
+
+    public ActorType getType() {
+        return type;
+    }
+
+    public void setType(ActorType type) {
+        this.type = type;
     }
 }
