@@ -13,6 +13,8 @@ public abstract class AbstractPlayer extends AbstractActor {
 
     private Keyboard keyboard;
 
+    private int score;
+
     public AbstractSound getBounceSound() {
         return bounceSound;
     }
@@ -27,5 +29,13 @@ public abstract class AbstractPlayer extends AbstractActor {
 
     public void setKeyboard(Keyboard keyboard) {
         this.keyboard = keyboard;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
     }
 }

@@ -16,7 +16,6 @@ public abstract class AbstractActor extends AbstractCollidable {
         this.health = health;
     }
 
-
     public float getSpeed() {
         return speed;
     }
