@@ -4,14 +4,14 @@ package game.object.common;
  * Abstracts class used for store object position
  */
 public abstract class AbstractCollidable {
-    public float x;
-    public float y;
+    public int x;
+    public int y;
 
-    public float getX() {
+    public int getX() {
         return x;
     }
 
-    public float getY() {
+    public int getY() {
         return y;
     }
 }
