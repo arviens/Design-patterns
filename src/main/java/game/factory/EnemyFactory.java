@@ -2,10 +2,11 @@ package game.factory;
 
 import game.object.enemy.AbstractEnemy;
 import game.object.enemy.EnemyType;
-import game.object.weapon.AbstractWeapon;
-import game.object.weapon.WeaponType;
 
-public class EnemyFactory extends AbstractDrawableFactory  {
+/**
+ * Enemy factory used for creating enemies
+ */
+public class EnemyFactory extends AbstractActorFactory {
 
     AbstractEnemy getAbstractEnemy(EnemyType enemyType) {
         switch (enemyType){
@@ -16,10 +17,6 @@ public class EnemyFactory extends AbstractDrawableFactory  {
                 System.out.println("Zombie");
                 break;
         }
-        return null;
-    }
-
-    AbstractWeapon getAbstractWeapon(WeaponType weaponType) {
         return null;
     }
 }
