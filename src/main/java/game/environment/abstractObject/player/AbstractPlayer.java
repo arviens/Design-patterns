@@ -3,6 +3,7 @@ package game.environment.abstractObject.player;
 
 import game.environment.abstractObject.common.AbstractActor;
 import game.environment.abstractObject.weapon.AbstractWeapon;
+import game.environment.object.player.Keyboard;
 import game.sound.AbstractSound;
 
 /**

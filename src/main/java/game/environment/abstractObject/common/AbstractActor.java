@@ -1,6 +1,7 @@
 package game.environment.abstractObject.common;
 
 import game.environment.abstractObject.sprite.AbstractSprite;
+import game.environment.object.common.ActorType;
 
 /**
  * Abstract class which contains fields of all game objects
