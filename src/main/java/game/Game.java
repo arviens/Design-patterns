@@ -63,10 +63,6 @@ public class Game extends ApplicationAdapter {
         batch.draw(img, bucket.x, bucket.y);
         camera.update();
         batch.end();
-        if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) item.setX(10);
-        if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) bucket.x += 400 * Gdx.graphics.getDeltaTime();
-        if (Gdx.input.isKeyPressed(Input.Keys.UP)) bucket.y += 400 * Gdx.graphics.getDeltaTime();
-        if (Gdx.input.isKeyPressed(Input.Keys.DOWN)) bucket.y -= 400 * Gdx.graphics.getDeltaTime();
     }
 
 
