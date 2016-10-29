@@ -2,10 +2,11 @@ package util;
 
 import game.environment.abstractObject.common.AbstractCollidable;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Drawable {
-    private static List<AbstractCollidable> environmentObjects;
+    private static List<AbstractCollidable> environmentObjects = new ArrayList<AbstractCollidable>();
     private static Drawable instance;
 
     public static synchronized Drawable getInstance() {

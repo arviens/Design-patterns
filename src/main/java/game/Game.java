@@ -12,6 +12,7 @@ import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.World;
 import game.environment.abstractObject.common.AbstractCollidable;
+import game.environment.object.item.HeartItem;
 import util.Drawable;
 
 public class Game extends ApplicationAdapter {
@@ -22,11 +23,14 @@ public class Game extends ApplicationAdapter {
     private BodyDef bodyDef;
     private Rectangle bucket;
     private World world;
+    private HeartItem item;
 
     @Override
     public void create() {
         batch = new SpriteBatch();
         img = new Texture("assets/images/batman.png");
+        item = new HeartItem();
+        Drawable.insertObject(item);
 //        music = Gdx.audio.newMusic(Gdx.files.internal("assets/batman.mp3"));
 //        music.setLooping(true);
         camera = new OrthographicCamera();
@@ -53,12 +57,12 @@ public class Game extends ApplicationAdapter {
         batch.setProjectionMatrix(camera.combined);
         batch.begin();
         for (AbstractCollidable collidable : Drawable.getEnvironmentObjects()) {
-            batch.draw(collidable.);
+            batch.draw(collidable.getSprite().getTexture(), collidable.getX(), collidable.getY());
         }
         batch.draw(img, bucket.x, bucket.y);
         camera.update();
         batch.end();
-        if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) bucket.x -= 400 * Gdx.graphics.getDeltaTime();
+        if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) item.setX(10);
         if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) bucket.x += 400 * Gdx.graphics.getDeltaTime();
         if (Gdx.input.isKeyPressed(Input.Keys.UP)) bucket.y += 400 * Gdx.graphics.getDeltaTime();
         if (Gdx.input.isKeyPressed(Input.Keys.DOWN)) bucket.y -= 400 * Gdx.graphics.getDeltaTime();

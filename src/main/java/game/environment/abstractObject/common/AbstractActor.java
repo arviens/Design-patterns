@@ -1,6 +1,5 @@
 package game.environment.abstractObject.common;
 
-import game.environment.abstractObject.sprite.AbstractSprite;
 import game.environment.object.common.ActorType;
 
 /**
@@ -11,7 +10,6 @@ public abstract class AbstractActor extends AbstractCollidable {
     private int health;
     private float speed;
     private ActorType type;
-    private AbstractSprite sprite;
 
     public int getHealth() {
         return health;

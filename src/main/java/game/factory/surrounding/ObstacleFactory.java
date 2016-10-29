@@ -2,6 +2,8 @@ package game.factory.surrounding;
 
 import game.environment.abstractObject.surrounding.obstacle.AbstractObstacle;
 import game.environment.abstractObject.surrounding.platform.AbstractPlatform;
+import game.environment.object.surrounding.obstacle.ObstacleType;
+import game.environment.object.surrounding.platform.PlatformType;
 
 /**
  * Created by kalafioras on 2016-10-29.
