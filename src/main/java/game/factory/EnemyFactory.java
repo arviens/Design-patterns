@@ -17,8 +17,6 @@ public class EnemyFactory extends AbstractDrawableFactory  {
                 break;
         }
         return null;
-    }AbstractWeapon getAbstractWeapon(WeaponType weaponType) {
-        return null;
     }
 
     AbstractWeapon getAbstractWeapon(WeaponType weaponType) {
