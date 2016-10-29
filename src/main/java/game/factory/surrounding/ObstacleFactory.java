@@ -11,6 +11,7 @@ import static game.environment.enemy.EnemyType.ZOMBIE;
  * Created by kalafioras on 2016-10-29.
  */
 public class ObstacleFactory {
+
      AbstractObstacle getObstacle(ObstacleType obstacleType)
      {
          switch (obstacleType){
