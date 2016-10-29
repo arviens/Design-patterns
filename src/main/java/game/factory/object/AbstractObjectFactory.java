@@ -1,4 +1,4 @@
-package game.factory.ObjectFactory;
+package game.factory.object;
 
 import game.environment.item.AbstractItem;
 import game.environment.item.ItemType;
