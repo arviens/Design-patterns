@@ -2,23 +2,25 @@ package game.environment.abstractObject.item;
 
 import game.environment.abstractObject.common.AbstractCollidable;
 import game.environment.abstractObject.sprite.AbstractSprite;
+import game.environment.object.item.Enhancement;
 import game.sound.AbstractSound;
 
 /**
  * Stores information about actor
  */
 public abstract class AbstractItem extends AbstractCollidable {
-    private long droppedTime;
 
+    private long droppedTime;
     //What kind of enhancement actor will give to user
     private Enhancement enhancement;
-
     //What kind of influence
     private int influence;
-
     private AbstractSound pickUpSound;
-
     private AbstractSprite sprite;
+
+    public AbstractItem(AbstractSprite sprite) {
+        this.sprite = sprite;
+    }
 
     public long getDroppedTime() {
         return droppedTime;
