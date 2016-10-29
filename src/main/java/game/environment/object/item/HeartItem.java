@@ -1,6 +1,7 @@
 package game.environment.object.item;
 
 import game.environment.abstractObject.item.AbstractItem;
+import util.Drawable;
 
 /**
  * Created by kalafioras on 2016-10-29.
@@ -11,4 +12,5 @@ public class HeartItem extends AbstractItem {
     public HeartItem() {
         setSprite(getSpriteByName(HEART_SPRITE));
     }
+
 }
