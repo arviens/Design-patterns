@@ -4,6 +4,7 @@ import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import game.algorithm.AbstractAlgorithm;
+import game.algorithm.Algorithm;
 
 /**
  * Abstracts class used for store surrounding position
@@ -12,7 +13,7 @@ public abstract class AbstractCollidable {
     private int x;
     private int y;
     private Sprite sprite;
-    private AbstractAlgorithm abstractAlgorithm;
+    private Algorithm abstractAlgorithm;
 
     public int getX() {
         return x;
@@ -42,11 +43,11 @@ public abstract class AbstractCollidable {
         return new Sprite(new Texture(new FileHandle(pathToSprite)));
     }
 
-    public AbstractAlgorithm getAbstractAlgorithm() {
+    public Algorithm getAbstractAlgorithm() {
         return abstractAlgorithm;
     }
 
-    public void setAbstractAlgorithm(AbstractAlgorithm abstractAlgorithm) {
+    public void setAbstractAlgorithm(Algorithm abstractAlgorithm) {
         this.abstractAlgorithm = abstractAlgorithm;
     }
 }

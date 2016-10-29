@@ -58,6 +58,7 @@ public class Game extends ApplicationAdapter {
         batch.begin();
         for (AbstractCollidable collidable : Drawable.getEnivornmentObjects()) {
             batch.draw(collidable.getSprite().getTexture(), collidable.getX(), collidable.getY());
+            collidable.getAbstractAlgorithm().move(collidable);
         }
         batch.draw(img, bucket.x, bucket.y);
         camera.update();

@@ -1,9 +1,9 @@
 package game.algorithm.enemy;
 
-import game.algorithm.AbstractAlgorithm;
+import game.algorithm.Algorithm;
 import game.environment.abstractObject.common.AbstractCollidable;
 
-public class SimpleMove extends AbstractAlgorithm {
+public class SimpleMove implements Algorithm{
 
     public void move(AbstractCollidable object) {
         object.setX(object.getX() + 1);
