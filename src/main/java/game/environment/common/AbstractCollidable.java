@@ -1,4 +1,4 @@
-package game.object.common;
+package game.environment.common;
 
 /**
  * Abstracts class used for store object position

@@ -1,11 +1,9 @@
 package game.factory;
 
-import game.object.enemy.AbstractEnemy;
-import game.object.enemy.EnemyType;
-import game.object.item.AbstractItem;
-import game.object.item.ItemType;
-import game.object.weapon.AbstractWeapon;
-import game.object.weapon.WeaponType;
+import game.environment.item.AbstractItem;
+import game.environment.item.ItemType;
+import game.environment.weapon.AbstractWeapon;
+import game.environment.weapon.WeaponType;
 
 abstract class AbstractObjectFactory {
     abstract AbstractItem getAbstractItem(ItemType enemyType);

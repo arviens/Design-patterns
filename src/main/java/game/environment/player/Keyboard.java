@@ -1,4 +1,4 @@
-package game.object.player;
+package game.environment.player;
 
 import com.badlogic.gdx.Input.Keys;
 

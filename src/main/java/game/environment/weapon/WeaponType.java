@@ -1,4 +1,4 @@
-package game.object.weapon;
+package game.environment.weapon;
 
 /**
  * Created by arviens on 10/27/16.

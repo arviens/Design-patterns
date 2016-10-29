@@ -1,6 +1,6 @@
-package game.object.environment;
+package game.environment.object;
 
-import game.object.common.AbstractCollidable;
+import game.environment.common.AbstractCollidable;
 
 /**
  * Created by kalafioras on 2016-10-17.

@@ -1,4 +1,4 @@
-package game.object.sprite;
+package game.environment.sprite;
 
 
 /**

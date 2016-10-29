@@ -1,4 +1,4 @@
-package game.object.common;
+package game.environment.common;
 
 /**
  * Saves AbstractActor type

@@ -1,7 +1,7 @@
-package game.object.item;
+package game.environment.item;
 
-import game.object.common.AbstractCollidable;
-import game.object.sprite.AbstractSprite;
+import game.environment.common.AbstractCollidable;
+import game.environment.sprite.AbstractSprite;
 import game.sound.AbstractSound;
 
 /**

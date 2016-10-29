@@ -1,4 +1,4 @@
-package game.object.item;
+package game.environment.item;
 
 /**
  * Created by arviens on 16.10.17.

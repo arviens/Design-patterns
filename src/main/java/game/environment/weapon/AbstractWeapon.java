@@ -1,6 +1,6 @@
-package game.object.weapon;
+package game.environment.weapon;
 
-import game.object.common.AbstractCollidable;
+import game.environment.common.AbstractCollidable;
 import game.sound.AbstractSound;
 
 /**

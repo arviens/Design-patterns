@@ -1,4 +1,4 @@
-package game.object.enemy;
+package game.environment.enemy;
 
 public enum EnemyType {
     ZOMBIE,

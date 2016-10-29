@@ -1,6 +1,6 @@
-package game.object.common;
+package game.environment.common;
 
-import game.object.sprite.AbstractSprite;
+import game.environment.sprite.AbstractSprite;
 
 /**
  * Abstract class which contains fields of all game objects

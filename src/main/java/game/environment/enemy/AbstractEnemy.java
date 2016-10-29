@@ -1,6 +1,6 @@
-package game.object.enemy;
+package game.environment.enemy;
 
-import game.object.common.AbstractActor;
+import game.environment.common.AbstractActor;
 
 /**
  * Created by arviens on 16.10.17.
