@@ -1,6 +1,6 @@
-package game.environment.surrounding.platform;
+package game.environment.abstractObject.surrounding.platform;
 
-import game.environment.common.AbstractCollidable;
+import game.environment.abstractObject.common.AbstractCollidable;
 
 /**
  * Non-movable platform objects which might give damage to the player

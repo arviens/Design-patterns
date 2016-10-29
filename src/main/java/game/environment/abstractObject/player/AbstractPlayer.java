@@ -1,8 +1,8 @@
-package game.environment.player;
+package game.environment.abstractObject.player;
 
 
-import game.environment.common.AbstractActor;
-import game.environment.weapon.AbstractWeapon;
+import game.environment.abstractObject.common.AbstractActor;
+import game.environment.abstractObject.weapon.AbstractWeapon;
 import game.sound.AbstractSound;
 
 /**

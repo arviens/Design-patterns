@@ -1,4 +1,4 @@
-package game.environment.common;
+package game.environment.abstractObject.common;
 
 /**
  * Abstracts class used for store surrounding position

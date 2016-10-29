@@ -1,6 +1,6 @@
-package game.environment.surrounding.obstacle;
+package game.environment.abstractObject.surrounding.obstacle;
 
-import game.environment.common.AbstractCollidable;
+import game.environment.abstractObject.common.AbstractCollidable;
 
 /**
  * Created by kalafioras on 2016-10-29.

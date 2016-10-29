@@ -1,6 +1,6 @@
-package game.environment.sprite;
+package game.environment.abstractObject.sprite;
 
-import game.environment.common.AbstractCollidable;
+import game.environment.abstractObject.common.AbstractCollidable;
 
 /**
  * Created by kalafioras on 2016-10-17.

@@ -1,8 +1,6 @@
 package game.factory.actor;
 
-import game.environment.enemy.AbstractEnemy;
-import game.environment.enemy.EnemyType;
-import game.factory.actor.AbstractActorFactory;
+import game.environment.abstractObject.enemy.AbstractEnemy;
 
 /**
  * Enemy factory used for creating enemies

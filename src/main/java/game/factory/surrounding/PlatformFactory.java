@@ -1,10 +1,7 @@
 package game.factory.surrounding;
 
-import game.environment.surrounding.obstacle.AbstractObstacle;
-import game.environment.surrounding.platform.AbstractPlatform;
-import game.environment.surrounding.platform.PlatformType;
-
-import static game.environment.surrounding.obstacle.ObstacleType.ROCK;
+import game.environment.abstractObject.surrounding.obstacle.AbstractObstacle;
+import game.environment.abstractObject.surrounding.platform.AbstractPlatform;
 
 /**
  * Created by kalafioras on 2016-10-29.

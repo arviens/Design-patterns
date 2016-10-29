@@ -1,10 +1,8 @@
 package game.factory.surrounding;
 
 
-import game.environment.surrounding.obstacle.AbstractObstacle;
-import game.environment.surrounding.obstacle.ObstacleType;
-import game.environment.surrounding.platform.AbstractPlatform;
-import game.environment.surrounding.platform.PlatformType;
+import game.environment.abstractObject.surrounding.obstacle.AbstractObstacle;
+import game.environment.abstractObject.surrounding.platform.AbstractPlatform;
 
 abstract class AbstractSurroundingFactory {
     abstract AbstractObstacle getObstacle(ObstacleType type);

@@ -1,9 +1,7 @@
 package game.factory.object;
 
-import game.environment.item.AbstractItem;
-import game.environment.item.ItemType;
-import game.environment.weapon.AbstractWeapon;
-import game.environment.weapon.WeaponType;
+import game.environment.abstractObject.item.AbstractItem;
+import game.environment.abstractObject.weapon.AbstractWeapon;
 
 abstract class AbstractObjectFactory {
     abstract AbstractItem getAbstractItem(ItemType itemType);
