@@ -6,7 +6,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Drawable {
-    private static List<AbstractCollidable> environmentObjects = new ArrayList<AbstractCollidable>();
+    private static List<AbstractCollidable> surroundingObjects = new ArrayList<AbstractCollidable>();
+    private static List<AbstractCollidable> itemObjects = new ArrayList<AbstractCollidable>();
+    private static List<AbstractCollidable> enemyObjects = new ArrayList<AbstractCollidable>();
+
+
     private static Drawable instance;
 
     public static synchronized Drawable getInstance() {
@@ -20,19 +24,19 @@ public class Drawable {
         }
     }
 
-    public static synchronized void insertObject(AbstractCollidable collidable) {
+    public static synchronized List<AbstractCollidable> getSurroundingObjects() {
         createInstance();
-        environmentObjects.add(collidable);
+        return surroundingObjects;
     }
 
-    public static synchronized void removeObject(AbstractCollidable collidable) {
+    public static synchronized List<AbstractCollidable> getItemObjects() {
         createInstance();
-        environmentObjects.remove(collidable);
+        return itemObjects;
     }
 
-    public static synchronized List<AbstractCollidable> getEnvironmentObjects() {
+    public static synchronized List<AbstractCollidable> getEnemyObjects() {
         createInstance();
-        return environmentObjects;
+        return enemyObjects;
     }
 }
 
