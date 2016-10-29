@@ -6,17 +6,22 @@ import game.environment.abstractObject.common.AbstractCollidable;
  * Created by kalafioras on 2016-10-17.
  */
 public abstract class AbstractSprite extends AbstractCollidable implements ISprite{
-    protected int spriteWidth;
-    protected int spriteHeight;
+    private int spriteWidth;
+    private int spriteHeight;
 
-//TODO Rename getters
-    public int width() {
+    public int getSpriteWidth() {
         return spriteWidth;
     }
 
+    public void setSpriteWidth(int spriteWidth) {
+        this.spriteWidth = spriteWidth;
+    }
 
-    public int height() {
+    public int getSpriteHeight() {
         return spriteHeight;
     }
 
+    public void setSpriteHeight(int spriteHeight) {
+        this.spriteHeight = spriteHeight;
+    }
 }
