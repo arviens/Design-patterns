@@ -1,11 +1,8 @@
 package game.environment.object.item;
 
 import game.environment.abstractObject.item.AbstractItem;
-import util.Drawable;
 
-/**
- * Created by kalafioras on 2016-10-29.
- */
+
 public class HeartItem extends AbstractItem {
     private final static String HEART_SPRITE = "/assets/sprites/enemies/blockerMad.png";
 

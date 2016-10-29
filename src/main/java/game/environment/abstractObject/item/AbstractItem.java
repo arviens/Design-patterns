@@ -4,7 +4,6 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import game.environment.abstractObject.common.AbstractCollidable;
 import game.environment.object.item.Enhancement;
 import game.sound.AbstractSound;
-import org.lwjgl.Sys;
 
 /**
  * Stores information about actor
