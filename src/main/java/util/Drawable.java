@@ -1,7 +1,6 @@
 package util;
 
 import game.environment.abstractObject.common.AbstractCollidable;
-import game.environment.abstractObject.surrounding.obstacle.AbstractObstacle;
 
 import java.util.ArrayList;
 import java.util.List;
