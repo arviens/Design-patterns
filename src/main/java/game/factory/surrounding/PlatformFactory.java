@@ -10,6 +10,7 @@ import static game.environment.surrounding.obstacle.ObstacleType.ROCK;
  * Created by kalafioras on 2016-10-29.
  */
 public class PlatformFactory {
+
     AbstractObstacle getObstacle(PlatformType obstacleType)
     {
         return null;
