@@ -11,6 +11,8 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.World;
+import game.environment.abstractObject.common.AbstractCollidable;
+import util.Drawable;
 
 public class Game extends ApplicationAdapter {
     private SpriteBatch batch;
@@ -37,7 +39,7 @@ public class Game extends ApplicationAdapter {
         this.bodyDef = new BodyDef();
         //music.play();
         bodyDef.type = BodyDef.BodyType.DynamicBody;
-        bodyDef.position.set(100,300);
+        bodyDef.position.set(100, 300);
 //        world = new World(new Vector2(0, -10), true);
 //        Body body = world.createBody(bodyDef);
 //        world.step(1/60f, 6, 2);
@@ -50,13 +52,16 @@ public class Game extends ApplicationAdapter {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         batch.setProjectionMatrix(camera.combined);
         batch.begin();
+        for (AbstractCollidable collidable : Drawable.getEnvironmentObjects()) {
+            batch.draw(collidable.);
+        }
         batch.draw(img, bucket.x, bucket.y);
         camera.update();
         batch.end();
-        if(Gdx.input.isKeyPressed(Input.Keys.LEFT)) bucket.x -= 400 * Gdx.graphics.getDeltaTime();
-        if(Gdx.input.isKeyPressed(Input.Keys.RIGHT)) bucket.x += 400 * Gdx.graphics.getDeltaTime();
-        if(Gdx.input.isKeyPressed(Input.Keys.UP)) bucket.y += 400 * Gdx.graphics.getDeltaTime();
-        if(Gdx.input.isKeyPressed(Input.Keys.DOWN)) bucket.y -= 400 * Gdx.graphics.getDeltaTime();
+        if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) bucket.x -= 400 * Gdx.graphics.getDeltaTime();
+        if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) bucket.x += 400 * Gdx.graphics.getDeltaTime();
+        if (Gdx.input.isKeyPressed(Input.Keys.UP)) bucket.y += 400 * Gdx.graphics.getDeltaTime();
+        if (Gdx.input.isKeyPressed(Input.Keys.DOWN)) bucket.y -= 400 * Gdx.graphics.getDeltaTime();
     }
 
     @Override

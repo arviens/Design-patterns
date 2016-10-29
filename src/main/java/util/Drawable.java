@@ -2,7 +2,6 @@ package util;
 
 import game.environment.abstractObject.common.AbstractCollidable;
 
-import java.io.FileNotFoundException;
 import java.util.List;
 
 public class Drawable {
@@ -10,21 +9,28 @@ public class Drawable {
     private static Drawable instance;
 
     public static synchronized Drawable getInstance() {
-        if (instance == null) {
-            instance = new Drawable();
-        }
+        createInstance();
         return instance;
     }
 
+    private static synchronized void createInstance() {
+        if (instance == null) {
+            instance = new Drawable();
+        }
+    }
+
     public static synchronized void insertObject(AbstractCollidable collidable) {
+        createInstance();
         environmentObjects.add(collidable);
     }
 
     public static synchronized void removeObject(AbstractCollidable collidable) {
+        createInstance();
         environmentObjects.remove(collidable);
     }
 
     public static synchronized List<AbstractCollidable> getEnvironmentObjects() {
+        createInstance();
         return environmentObjects;
     }
 }
