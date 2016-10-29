@@ -7,7 +7,7 @@ import game.sound.AbstractSound;
 /**
  * Stores information about item
  */
-public abstract class AbsractItem extends AbstractCollidable {
+public abstract class AbstractItem extends AbstractCollidable {
     private long droppedTime;
 
     //What kind of enhancement item will give to user

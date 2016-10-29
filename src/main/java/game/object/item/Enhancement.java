@@ -6,5 +6,6 @@ package game.object.item;
 public enum Enhancement {
     SPEED,
     JUMP,
-    DAMAGE
+    DAMAGE,
+    HEALTH
 }

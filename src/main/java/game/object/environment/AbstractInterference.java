@@ -1,4 +1,4 @@
-package game.object.obstacle;
+package game.object.environment;
 
 import game.object.common.AbstractCollidable;
 
