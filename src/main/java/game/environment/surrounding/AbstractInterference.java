@@ -1,4 +1,4 @@
-package game.environment.object;
+package game.environment.surrounding;
 
 import game.environment.common.AbstractCollidable;
 

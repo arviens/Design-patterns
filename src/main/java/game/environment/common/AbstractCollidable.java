@@ -1,7 +1,7 @@
 package game.environment.common;
 
 /**
- * Abstracts class used for store object position
+ * Abstracts class used for store surrounding position
  */
 public abstract class AbstractCollidable {
     public int x;
