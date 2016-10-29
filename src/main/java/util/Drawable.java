@@ -1,15 +1,13 @@
 package util;
 
 import game.environment.abstractObject.common.AbstractCollidable;
+import game.environment.abstractObject.surrounding.obstacle.AbstractObstacle;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Drawable {
-    private static List<AbstractCollidable> surroundingObjects = new ArrayList<AbstractCollidable>();
-    private static List<AbstractCollidable> itemObjects = new ArrayList<AbstractCollidable>();
-    private static List<AbstractCollidable> enemyObjects = new ArrayList<AbstractCollidable>();
-
+    private static List<AbstractCollidable> enivornmentObjects = new ArrayList<AbstractCollidable>();
 
     private static Drawable instance;
 
@@ -24,20 +22,11 @@ public class Drawable {
         }
     }
 
-    public static synchronized List<AbstractCollidable> getSurroundingObjects() {
+    public static synchronized List<AbstractCollidable> getEnivornmentObjects() {
         createInstance();
-        return surroundingObjects;
+        return enivornmentObjects;
     }
 
-    public static synchronized List<AbstractCollidable> getItemObjects() {
-        createInstance();
-        return itemObjects;
-    }
-
-    public static synchronized List<AbstractCollidable> getEnemyObjects() {
-        createInstance();
-        return enemyObjects;
-    }
 }
 
 

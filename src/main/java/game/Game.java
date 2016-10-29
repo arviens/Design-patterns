@@ -30,7 +30,7 @@ public class Game extends ApplicationAdapter {
         batch = new SpriteBatch();
         img = new Texture("assets/images/batman.png");
         item = new HeartItem();
-        Drawable.getSurroundingObjects().add(item);
+        Drawable.getEnivornmentObjects().add(item);
 //        music = Gdx.audio.newMusic(Gdx.files.internal("assets/batman.mp3"));
 //        music.setLooping(true);
         camera = new OrthographicCamera();
@@ -56,7 +56,9 @@ public class Game extends ApplicationAdapter {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         batch.setProjectionMatrix(camera.combined);
         batch.begin();
-        renderSurroundings();
+        for (AbstractCollidable collidable : Drawable.getEnivornmentObjects()) {
+            batch.draw(collidable.getSprite().getTexture(), collidable.getX(), collidable.getY());
+        }
         batch.draw(img, bucket.x, bucket.y);
         camera.update();
         batch.end();
@@ -66,11 +68,6 @@ public class Game extends ApplicationAdapter {
         if (Gdx.input.isKeyPressed(Input.Keys.DOWN)) bucket.y -= 400 * Gdx.graphics.getDeltaTime();
     }
 
-    private void renderSurroundings() {
-        for (AbstractCollidable collidable : Drawable.getSurroundingObjects()) {
-            batch.draw(collidable.getSprite().getTexture(), collidable.getX(), collidable.getY());
-        }
-    }
 
     @Override
     public void dispose() {
