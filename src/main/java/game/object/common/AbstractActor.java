@@ -4,6 +4,7 @@ import game.object.sprite.AbstractSprite;
 
 /**
  * Abstract class which contains fields of all game objects
+ * Movable objects such as Player, Monster.
  */
 public abstract class AbstractActor extends AbstractCollidable {
     private int health;
