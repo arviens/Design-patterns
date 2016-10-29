@@ -9,7 +9,7 @@ public class EnemyFactory extends AbstractDrawableFactory  {
 
     AbstractEnemy getAbstractEnemy(EnemyType enemyType) {
         switch (enemyType){
-            case PHEONIX:
+            case PHOENIX:
                 System.out.println("Pheonix");
                 break;
             case ZOMBIE:
