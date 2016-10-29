@@ -1,4 +1,4 @@
-package game.factory;
+package game.factory.surrounding;
 
 
 import game.environment.surrounding.obstacle.AbstractObstacle;

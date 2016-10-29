@@ -1,4 +1,4 @@
-package game.factory;
+package game.factory.actor;
 
 import game.environment.enemy.AbstractEnemy;
 import game.environment.enemy.EnemyType;

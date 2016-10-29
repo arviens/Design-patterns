@@ -5,12 +5,12 @@ import game.environment.sprite.AbstractSprite;
 import game.sound.AbstractSound;
 
 /**
- * Stores information about item
+ * Stores information about actor
  */
 public abstract class AbstractItem extends AbstractCollidable {
     private long droppedTime;
 
-    //What kind of enhancement item will give to user
+    //What kind of enhancement actor will give to user
     private Enhancement enhancement;
 
     //What kind of influence
