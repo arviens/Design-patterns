@@ -4,6 +4,7 @@ import game.environment.abstractObject.common.AbstractCollidable;
 import game.environment.abstractObject.sprite.AbstractSprite;
 import game.environment.object.item.Enhancement;
 import game.sound.AbstractSound;
+import org.lwjgl.Sys;
 
 /**
  * Stores information about actor
@@ -18,8 +19,8 @@ public abstract class AbstractItem extends AbstractCollidable {
     private AbstractSound pickUpSound;
     private AbstractSprite sprite;
 
-    public AbstractItem(AbstractSprite sprite) {
-        this.sprite = sprite;
+    public AbstractItem() {
+        droppedTime = System.currentTimeMillis();
     }
 
     public long getDroppedTime() {
