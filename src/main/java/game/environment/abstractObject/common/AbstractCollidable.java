@@ -12,7 +12,7 @@ public abstract class AbstractCollidable {
     private int x;
     private int y;
     private Sprite sprite;
-    private IAlgorithm abstractIAlgorithm;
+    private IAlgorithm algorithm;
 
     public int getX() {
         return x;
@@ -43,16 +43,16 @@ public abstract class AbstractCollidable {
     }
 
     public IAlgorithm getAlgorithm() {
-        return abstractIAlgorithm;
+        return algorithm;
     }
 
     public void move(){
-        if(abstractIAlgorithm != null) {
-            abstractIAlgorithm.move(this);
+        if(algorithm != null) {
+            algorithm.move(this);
         }
     }
 
-    public void setAlgorithm(IAlgorithm abstractIAlgorithm) {
-        this.abstractIAlgorithm = abstractIAlgorithm;
+    public void setAlgorithm(IAlgorithm algorithm) {
+        this.algorithm = algorithm;
     }
 }
