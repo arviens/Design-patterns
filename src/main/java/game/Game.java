@@ -59,13 +59,14 @@ public class Game extends ApplicationAdapter {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         batch.setProjectionMatrix(camera.combined);
         batch.begin();
+        batch.draw(img, bucket.x, bucket.y);
         for (Map.Entry<DrawableType, List<AbstractCollidable>> value: Drawable.getEnivornmentObjects().entrySet()) {
             for(AbstractCollidable collidable: value.getValue()) {
                 batch.draw(collidable.getSprite(), collidable.getX(), collidable.getY());
                 collidable.move();
             }
         }
-        batch.draw(img, bucket.x, bucket.y);
+
         camera.update();
         batch.end();
     }
