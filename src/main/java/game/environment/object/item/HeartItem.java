@@ -9,7 +9,7 @@ public class HeartItem extends AbstractItem {
 
     public HeartItem() {
         setSprite(getSpriteByName(HEART_SPRITE));
-        setAbstractAlgorithm(new SimpleMove());
+        setAlgorithm(new SimpleMove());
     }
 
 }

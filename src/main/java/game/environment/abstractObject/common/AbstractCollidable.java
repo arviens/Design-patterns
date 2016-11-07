@@ -3,7 +3,6 @@ package game.environment.abstractObject.common;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
-import game.algorithm.AbstractAlgorithm;
 import game.algorithm.Algorithm;
 
 /**
@@ -43,11 +42,15 @@ public abstract class AbstractCollidable {
         return new Sprite(new Texture(new FileHandle(pathToSprite)));
     }
 
-    public Algorithm getAbstractAlgorithm() {
+    public Algorithm getAlgorithm() {
         return abstractAlgorithm;
     }
 
-    public void setAbstractAlgorithm(Algorithm abstractAlgorithm) {
+    public void move(){
+        abstractAlgorithm.move(this);
+    }
+
+    public void setAlgorithm(Algorithm abstractAlgorithm) {
         this.abstractAlgorithm = abstractAlgorithm;
     }
 }

@@ -2,7 +2,6 @@ package game;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -58,7 +57,7 @@ public class Game extends ApplicationAdapter {
         batch.begin();
         for (AbstractCollidable collidable : Drawable.getEnivornmentObjects()) {
             batch.draw(collidable.getSprite().getTexture(), collidable.getX(), collidable.getY());
-            collidable.getAbstractAlgorithm().move(collidable);
+            collidable.move();
         }
         batch.draw(img, bucket.x, bucket.y);
         camera.update();
