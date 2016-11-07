@@ -16,7 +16,6 @@ public abstract class AbstractItem extends AbstractCollidable {
     //What kind of influence
     private int influence;
     private AbstractSound pickUpSound;
-    private Sprite sprite;
 
     public AbstractItem() {
         droppedTime = System.currentTimeMillis();
@@ -52,13 +51,5 @@ public abstract class AbstractItem extends AbstractCollidable {
 
     public void setPickUpSound(AbstractSound pickUpSound) {
         this.pickUpSound = pickUpSound;
-    }
-
-    public Sprite getSprite() {
-        return sprite;
-    }
-
-    public void setSprite(Sprite sprite) {
-        this.sprite = sprite;
     }
 }
