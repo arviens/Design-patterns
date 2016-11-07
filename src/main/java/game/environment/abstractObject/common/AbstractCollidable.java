@@ -47,7 +47,9 @@ public abstract class AbstractCollidable {
     }
 
     public void move(){
-        abstractAlgorithm.move(this);
+        if(abstractAlgorithm != null) {
+            abstractAlgorithm.move(this);
+        }
     }
 
     public void setAlgorithm(Algorithm abstractAlgorithm) {

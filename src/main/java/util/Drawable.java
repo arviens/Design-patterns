@@ -32,11 +32,18 @@ public class Drawable {
         createInstance();
         if (enivornmentObjects.containsKey(key)) {
             enivornmentObjects.get(key).add(object);
-        }else{
+        } else {
             List<AbstractCollidable> tempList = new ArrayList<AbstractCollidable>();
             tempList.add(object);
             enivornmentObjects.put(key, tempList);
         }
+    }
+
+    public static synchronized List<AbstractCollidable> getByType(DrawableType type) {
+        if (enivornmentObjects.containsKey(type)) {
+            return enivornmentObjects.get(type);
+        }
+        return null;
     }
 
 }
