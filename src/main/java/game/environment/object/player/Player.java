@@ -5,10 +5,10 @@ import game.environment.abstractObject.player.AbstractPlayer;
 
 
 public class Player extends AbstractPlayer {
-    private final static String HEART_SPRITE = "src/main/resources/assets/images/gangsta.png";
+    private final static String PLAYER_SPRITE = "src/main/resources/assets/images/gangsta.png";
 
     public Player() {
-        setSprite(getSpriteByName(HEART_SPRITE));
+        setSprite(getSpriteByName(PLAYER_SPRITE));
         setAlgorithm(new PlayerMove());
     }
 }

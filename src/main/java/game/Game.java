@@ -63,7 +63,7 @@ public class Game extends ApplicationAdapter {
         batch.setProjectionMatrix(camera.combined);
         batch.begin();
         batch.draw(img, bucket.x, bucket.y);
-        for (Map.Entry<DrawableType, List<AbstractCollidable>> value : Drawable.getEnivornmentObjects().entrySet()) {
+        for (Map.Entry<DrawableType, List<AbstractCollidable>> value : Drawable.getEnvironmentObjects().entrySet()) {
             for (AbstractCollidable collidable : value.getValue()) {
                 batch.draw(collidable.getSprite(), collidable.getX(), collidable.getY());
                 collidable.move();

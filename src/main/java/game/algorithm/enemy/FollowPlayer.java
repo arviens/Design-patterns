@@ -6,7 +6,7 @@ import util.Drawable;
 import util.DrawableType;
 
 
-public class SimpleMove extends AbstractCollidable implements IAlgorithm {
+public class FollowPlayer extends AbstractCollidable implements IAlgorithm {
 
     public void move(AbstractCollidable object) {
         AbstractCollidable player = Drawable.getByType(DrawableType.PLAYER).get(0);
