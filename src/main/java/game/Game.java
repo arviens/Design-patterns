@@ -13,6 +13,10 @@ import com.badlogic.gdx.physics.box2d.World;
 import game.environment.abstractObject.common.AbstractCollidable;
 import game.environment.object.item.HeartItem;
 import util.Drawable;
+import util.DrawableType;
+
+import java.util.List;
+import java.util.Map;
 
 public class Game extends ApplicationAdapter {
     private SpriteBatch batch;
@@ -29,7 +33,7 @@ public class Game extends ApplicationAdapter {
         batch = new SpriteBatch();
         img = new Texture("assets/images/batman.png");
         item = new HeartItem();
-        Drawable.getEnivornmentObjects().add(item);
+        Drawable.addToMap(DrawableType.ITEM, item);
 //        music = Gdx.audio.newMusic(Gdx.files.internal("assets/batman.mp3"));
 //        music.setLooping(true);
         camera = new OrthographicCamera();
@@ -55,9 +59,11 @@ public class Game extends ApplicationAdapter {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         batch.setProjectionMatrix(camera.combined);
         batch.begin();
-        for (AbstractCollidable collidable : Drawable.getEnivornmentObjects()) {
-            batch.draw(collidable.getSprite().getTexture(), collidable.getX(), collidable.getY());
-            collidable.move();
+        for (Map.Entry<DrawableType, List<AbstractCollidable>> value: Drawable.getEnivornmentObjects().entrySet()) {
+            for(AbstractCollidable collidable: value.getValue()) {
+                batch.draw(collidable.getSprite(), collidable.getX(), collidable.getY());
+                collidable.move();
+            }
         }
         batch.draw(img, bucket.x, bucket.y);
         camera.update();

@@ -3,10 +3,12 @@ package util;
 import game.environment.abstractObject.common.AbstractCollidable;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Drawable {
-    private static List<AbstractCollidable> enivornmentObjects = new ArrayList<AbstractCollidable>();
+    private static Map<DrawableType, List<AbstractCollidable>> enivornmentObjects = new HashMap<DrawableType, List<AbstractCollidable>>();
 
     private static Drawable instance;
 
@@ -21,9 +23,20 @@ public class Drawable {
         }
     }
 
-    public static synchronized List<AbstractCollidable> getEnivornmentObjects() {
+    public static synchronized Map<DrawableType, List<AbstractCollidable>> getEnivornmentObjects() {
         createInstance();
         return enivornmentObjects;
+    }
+
+    public static synchronized void addToMap(DrawableType key, AbstractCollidable object) {
+        createInstance();
+        if (enivornmentObjects.containsKey(key)) {
+            enivornmentObjects.get(key).add(object);
+        }else{
+            List<AbstractCollidable> tempList = new ArrayList<AbstractCollidable>();
+            tempList.add(object);
+            enivornmentObjects.put(key, tempList);
+        }
     }
 
 }
