@@ -7,7 +7,7 @@ import util.Drawable;
 import util.DrawableType;
 
 
-public class FollowPlayer extends AbstractCollidable implements Algorithm {
+public class FollowPlayer extends AbstractCollidable implements IAlgorithm {
     public void move(AbstractCollidable object) {
         AbstractCollidable player = Drawable.getByType(DrawableType.PLAYER).get(0);
 
@@ -15,7 +15,7 @@ public class FollowPlayer extends AbstractCollidable implements Algorithm {
         int deltaY = object.getY() - player.getY();
 
         float ratioX, ratioY;
-        if(Math.abs(deltaX) <= 1 && Math.abs(deltaY) <= 1)
+        if(Math.abs(deltaX) <= 2 && Math.abs(deltaY) <= 2)
         {
             ratioX = (float)0;
             ratioY = (float)0;
