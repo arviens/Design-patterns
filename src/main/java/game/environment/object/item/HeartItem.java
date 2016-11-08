@@ -1,7 +1,6 @@
 package game.environment.object.item;
 
 import game.algorithm.enemy.FollowPlayer;
-import game.algorithm.enemy.SimpleMove;
 import game.environment.abstractObject.item.AbstractItem;
 
 

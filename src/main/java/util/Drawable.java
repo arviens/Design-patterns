@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 public class Drawable {
-    private static Map<DrawableType, List<AbstractCollidable>> enivornmentObjects = new HashMap<DrawableType, List<AbstractCollidable>>();
+    private static Map<DrawableType, List<AbstractCollidable>> environmentObjects = new HashMap<DrawableType, List<AbstractCollidable>>();
 
     private static Drawable instance;
 
@@ -23,25 +23,25 @@ public class Drawable {
         }
     }
 
-    public static synchronized Map<DrawableType, List<AbstractCollidable>> getEnivornmentObjects() {
+    public static synchronized Map<DrawableType, List<AbstractCollidable>> getEnvironmentObjects() {
         createInstance();
-        return enivornmentObjects;
+        return environmentObjects;
     }
 
     public static synchronized void addToMap(DrawableType key, AbstractCollidable object) {
         createInstance();
-        if (enivornmentObjects.containsKey(key)) {
-            enivornmentObjects.get(key).add(object);
+        if (environmentObjects.containsKey(key)) {
+            environmentObjects.get(key).add(object);
         } else {
             List<AbstractCollidable> tempList = new ArrayList<AbstractCollidable>();
             tempList.add(object);
-            enivornmentObjects.put(key, tempList);
+            environmentObjects.put(key, tempList);
         }
     }
 
     public static synchronized List<AbstractCollidable> getByType(DrawableType type) {
-        if (enivornmentObjects.containsKey(type)) {
-            return enivornmentObjects.get(type);
+        if (environmentObjects.containsKey(type)) {
+            return environmentObjects.get(type);
         }
         return null;
     }

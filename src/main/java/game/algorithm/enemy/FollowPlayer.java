@@ -1,7 +1,7 @@
 package game.algorithm.enemy;
 
+import game.algorithm.IAlgorithm;
 import com.badlogic.gdx.Gdx;
-import game.algorithm.Algorithm;
 import game.environment.abstractObject.common.AbstractCollidable;
 import util.Drawable;
 import util.DrawableType;
