@@ -1,5 +1,6 @@
 package game.environment.object.item;
 
+import game.algorithm.enemy.FollowPlayer;
 import game.algorithm.enemy.SimpleMove;
 import game.environment.abstractObject.item.AbstractItem;
 
@@ -9,7 +10,7 @@ public class HeartItem extends AbstractItem {
 
     public HeartItem() {
         setSprite(getSpriteByName(HEART_SPRITE));
-        setAlgorithm(new SimpleMove());
+        setAlgorithm(new FollowPlayer());
     }
 
 }
