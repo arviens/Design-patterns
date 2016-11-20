@@ -2,6 +2,7 @@ package game;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -15,9 +16,12 @@ import game.environment.object.item.HeartItem;
 import game.environment.object.player.Player;
 import util.Drawable;
 import util.DrawableType;
+import util.GameState;
 
 import java.util.List;
 import java.util.Map;
+
+import static util.GameState.RUN;
 
 public class Game extends ApplicationAdapter {
     private SpriteBatch batch;
@@ -28,9 +32,11 @@ public class Game extends ApplicationAdapter {
     private Rectangle bucket;
     private World world;
     private HeartItem item;
-
+    private GameState gameState;
     @Override
     public void create() {
+        gameState = RUN;
+
         batch = new SpriteBatch();
         img = new Texture("assets/images/batman.png");
         item = new HeartItem();
@@ -57,20 +63,53 @@ public class Game extends ApplicationAdapter {
     }
 
     @Override
+    public void pause()
+    {
+        this.gameState = GameState.PAUSE;
+    }
+
+    @Override
+    public void resume()
+    {
+        this.gameState = RUN;
+    }
+
+    public void menu()
+    {
+        this.gameState = GameState.MENU;
+    }
+
+
+    @Override
     public void render() {
         Gdx.gl.glClearColor(0, 0, 0.2f, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         batch.setProjectionMatrix(camera.combined);
-        batch.begin();
-        batch.draw(img, bucket.x, bucket.y);
-        for (Map.Entry<DrawableType, List<AbstractCollidable>> value : Drawable.getEnvironmentObjects().entrySet()) {
-            for (AbstractCollidable collidable : value.getValue()) {
-                batch.draw(collidable.getSprite(), collidable.getX(), collidable.getY());
-                collidable.move();
+       switch (gameState){
+           case PAUSE:
+               if (Gdx.input.isKeyJustPressed(Input.Keys.P)){System.out.println("resume");resume();}
+               if (Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE)) {menu();System.out.println("menu");}
+               break;
+           case MENU:
+               if (Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE)) {resume();System.out.println("resume");}
+
+                break;
+           case RUN:
+                if (Gdx.input.isKeyJustPressed(Input.Keys.P)){System.out.println("pause");pause();}
+               if (Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE)) {menu();System.out.println("menu");}
+                batch.begin();
+                batch.draw(img, bucket.x, bucket.y);
+                for (Map.Entry<DrawableType, List<AbstractCollidable>> value : Drawable.getEnvironmentObjects().entrySet()) {
+                    for (AbstractCollidable collidable : value.getValue()) {
+                        batch.draw(collidable.getSprite(), collidable.getX(), collidable.getY());
+                        collidable.move();
+                }
             }
+
+            batch.end();
+               break;
         }
         camera.update();
-        batch.end();
     }
 
 
@@ -79,5 +118,6 @@ public class Game extends ApplicationAdapter {
         batch.dispose();
 //        music.dispose();
         img.dispose();
+        System.out.println("disposessss");
     }
 }
