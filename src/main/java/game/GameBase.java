@@ -20,6 +20,7 @@ import game.environment.object.item.HeartItem;
 import game.environment.object.item.ItemType;
 import game.environment.object.player.Player;
 import game.factory.object.ItemFactory;
+import game.panel.MainMenuScreen;
 import util.Drawable;
 import util.DrawableType;
 import util.GameState;
@@ -107,6 +108,9 @@ public class GameBase implements Screen {
                 game.batch.draw(collidable.getSprite(), collidable.getX(), collidable.getY());
                 collidable.move();
             }
+        }
+        if (Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE)) {
+            game.setScreen(new MainMenuScreen(game));
         }
         game.batch.end();
         camera.update();
