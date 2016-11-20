@@ -4,8 +4,8 @@ package util;
  * Saves game states such as
  */
 public enum GameState {
-    PAUSED,
-    RUNNING,
+    PAUSE,
+    RUN,
     MENU,
     SHOP
 }
