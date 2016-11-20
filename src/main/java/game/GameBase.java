@@ -2,6 +2,8 @@ package game;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
+import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -80,26 +82,20 @@ public class GameBase implements Screen {
 
     }
 
-    @Override
-    public void pause()
-    {
+    public void pause() {
         this.gameState = GameState.PAUSE;
     }
 
-    @Override
-    public void resume()
-    {
-        this.gameState = RUN;
+    public void resume() {
+        this.gameState = GameState.RUN;
     }
 
-    public void menu()
-    {
+    public void menu() {
         this.gameState = GameState.MENU;
     }
 
 
-    @Override
-    public void render() {
+    public void render(float delta) {
         Gdx.gl.glClearColor(0, 0, 0.2f, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         camera.update();
@@ -112,34 +108,47 @@ public class GameBase implements Screen {
                 collidable.move();
             }
         }
-        camera.update();
         game.batch.end();
-        batch.setProjectionMatrix(camera.combined);
-       switch (gameState){
-           case PAUSE:
-               if (Gdx.input.isKeyJustPressed(Input.Keys.P)){System.out.println("resume");resume();}
-               if (Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE)) {menu();System.out.println("menu");}
-               break;
-           case MENU:
-               if (Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE)) {resume();System.out.println("resume");}
-
-                break;
-           case RUN:
-                if (Gdx.input.isKeyJustPressed(Input.Keys.P)){System.out.println("pause");pause();}
-               if (Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE)) {menu();System.out.println("menu");}
-                batch.begin();
-                batch.draw(img, bucket.x, bucket.y);
-                for (Map.Entry<DrawableType, List<AbstractCollidable>> value : Drawable.getEnvironmentObjects().entrySet()) {
-                    for (AbstractCollidable collidable : value.getValue()) {
-                        batch.draw(collidable.getSprite(), collidable.getX(), collidable.getY());
-                        collidable.move();
-                }
-            }
-
-            batch.end();
-               break;
-        }
         camera.update();
+//        switch (gameState) {
+//            case PAUSE:
+//                if (Gdx.input.isKeyJustPressed(Input.Keys.P)) {
+//                    System.out.println("resume");
+//                    resume();
+//                }
+//                if (Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE)) {
+//                    menu();
+//                    System.out.println("menu");
+//                }
+//                break;
+//            case MENU:
+//                if (Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE)) {
+//                    resume();
+//                    System.out.println("resume");
+//                }
+//
+//                break;
+//            case RUN:
+//                if (Gdx.input.isKeyJustPressed(Input.Keys.P)) {
+//                    System.out.println("pause");
+//                    pause();
+//                }
+//                if (Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE)) {
+//                    menu();
+//                    System.out.println("menu");
+//                }
+//                game.batch.begin();
+//                game.batch.draw(img, bucket.x, bucket.y);
+//                for (Map.Entry<DrawableType, List<AbstractCollidable>> value : Drawable.getEnvironmentObjects().entrySet()) {
+//                    for (AbstractCollidable collidable : value.getValue()) {
+//                        game.batch.draw(collidable.getSprite(), collidable.getX(), collidable.getY());
+//                        collidable.move();
+//                    }
+//                }
+//
+//                game.batch.end();
+//                break;
+//        }
     }
 
 
@@ -149,14 +158,6 @@ public class GameBase implements Screen {
 
 
     public void resize(int width, int height) {
-
-    }
-
-    public void pause() {
-
-    }
-
-    public void resume() {
 
     }
 
