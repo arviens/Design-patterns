@@ -1,6 +1,5 @@
 package game.environment.abstractObject.item;
 
-import com.badlogic.gdx.graphics.g2d.Sprite;
 import game.environment.abstractObject.common.AbstractCollidable;
 import game.environment.object.item.Enhancement;
 import game.sound.AbstractSound;
@@ -16,6 +15,7 @@ public abstract class AbstractItem extends AbstractCollidable {
     //What kind of influence
     private int influence;
     private AbstractSound pickUpSound;
+    private int price;
 
     public AbstractItem() {
         droppedTime = System.currentTimeMillis();
@@ -51,5 +51,13 @@ public abstract class AbstractItem extends AbstractCollidable {
 
     public void setPickUpSound(AbstractSound pickUpSound) {
         this.pickUpSound = pickUpSound;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
     }
 }

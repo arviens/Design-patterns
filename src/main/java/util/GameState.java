@@ -6,5 +6,6 @@ package util;
 public enum GameState {
     PAUSED,
     RUNNING,
-    MENU
+    MENU,
+    SHOP
 }

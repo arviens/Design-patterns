@@ -1,7 +1,8 @@
 package game;
 
-import com.badlogic.gdx.ApplicationAdapter;
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -10,17 +11,22 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.World;
+import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.*;
+import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import game.environment.abstractObject.common.AbstractCollidable;
 import game.environment.object.item.HeartItem;
+import game.environment.object.item.ItemType;
 import game.environment.object.player.Player;
+import game.factory.object.ItemFactory;
 import util.Drawable;
 import util.DrawableType;
 
 import java.util.List;
 import java.util.Map;
 
-public class Game extends ApplicationAdapter {
-    private SpriteBatch batch;
+public class GameBase implements Screen {
+    private Drop game;
     private Texture img;
     private Music music;
     private OrthographicCamera camera;
@@ -29,13 +35,26 @@ public class Game extends ApplicationAdapter {
     private World world;
     private HeartItem item;
 
-    @Override
-    public void create() {
-        batch = new SpriteBatch();
+    public GameBase(final Drop game) {
+        this.game = game;
+        camera = new OrthographicCamera();
+        camera.setToOrtho(false, 800, 480);
+
         img = new Texture("assets/images/batman.png");
-        item = new HeartItem();
+        Table main = new Table();
+//        main.setFillParent(true);
+
+        // Create the tab buttons
+//        HorizontalGroup group = new HorizontalGroup();
+//        main.add(group);
+//        main.row();
+
+//        Drawable.addToMap(DrawableType.PANEL, new ShopScreen());
+        ItemFactory itemFactory = new ItemFactory();
+        Drawable.addToMap(DrawableType.ITEM, itemFactory.getAbstractItem(ItemType.HEART));
+        Drawable.addToMap(DrawableType.ITEM, itemFactory.getAbstractItem(ItemType.HEART_BAD));
         Player player = new Player();
-        Drawable.addToMap(DrawableType.ITEM, item);
+//        Drawable.addToMap(DrawableType.ITEM, item);
         Drawable.addToMap(DrawableType.PLAYER, player);
 //        music = Gdx.audio.newMusic(Gdx.files.internal("assets/batman.mp3"));
 //        music.setLooping(true);
@@ -50,33 +69,59 @@ public class Game extends ApplicationAdapter {
         //music.play();
         bodyDef.type = BodyDef.BodyType.DynamicBody;
         bodyDef.position.set(100, 300);
+    }
+
+    public void create() {
+
 //        world = new World(new Vector2(0, -10), true);
 //        Body body = world.createBody(bodyDef);
 //        world.step(1/60f, 6, 2);
 
     }
 
-    @Override
-    public void render() {
+    public void render(float delta) {
+
+
         Gdx.gl.glClearColor(0, 0, 0.2f, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-        batch.setProjectionMatrix(camera.combined);
-        batch.begin();
-        batch.draw(img, bucket.x, bucket.y);
+        camera.update();
+        game.batch.setProjectionMatrix(camera.combined);
+        game.batch.begin();
+//        game.batch.draw(img, bucket.x, bucket.y);
         for (Map.Entry<DrawableType, List<AbstractCollidable>> value : Drawable.getEnvironmentObjects().entrySet()) {
             for (AbstractCollidable collidable : value.getValue()) {
-                batch.draw(collidable.getSprite(), collidable.getX(), collidable.getY());
+                game.batch.draw(collidable.getSprite(), collidable.getX(), collidable.getY());
                 collidable.move();
             }
         }
         camera.update();
-        batch.end();
+        game.batch.end();
     }
 
 
-    @Override
+    public void show() {
+
+    }
+
+
+    public void resize(int width, int height) {
+
+    }
+
+    public void pause() {
+
+    }
+
+    public void resume() {
+
+    }
+
+    public void hide() {
+
+    }
+
     public void dispose() {
-        batch.dispose();
+        game.batch.dispose();
 //        music.dispose();
         img.dispose();
     }

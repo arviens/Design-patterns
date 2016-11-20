@@ -8,7 +8,6 @@ import game.environment.object.common.ActorType;
  */
 public abstract class AbstractActor extends AbstractCollidable {
     private int health;
-    private float speed;
     private ActorType type;
 
     public int getHealth() {
@@ -17,14 +16,6 @@ public abstract class AbstractActor extends AbstractCollidable {
 
     public void setHealth(int health) {
         this.health = health;
-    }
-
-    public float getSpeed() {
-        return speed;
-    }
-
-    public void setSpeed(float speed) {
-        this.speed = speed;
     }
 
     public ActorType getType() {

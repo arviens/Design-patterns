@@ -7,11 +7,11 @@ import game.environment.object.weapon.WeaponType;
 
 public class WeaponFactory extends AbstractObjectFactory {
 
-    AbstractItem getAbstractItem(ItemType itemType) {
+    public AbstractItem getAbstractItem(ItemType itemType) {
         return null;
     }
 
-    AbstractWeapon getAbstractWeapon(WeaponType weaponType) {
+    public AbstractWeapon getAbstractWeapon(WeaponType weaponType) {
         return null;
     }
 }

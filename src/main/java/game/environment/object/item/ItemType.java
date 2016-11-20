@@ -1,7 +1,8 @@
 package game.environment.object.item;
 
-public enum ItemType  {
+public enum ItemType {
     HEART,
-    SHROOM;
-
+    SHROOM,
+    HEART_BAD,
+    SHROOM_BAD,
 }
