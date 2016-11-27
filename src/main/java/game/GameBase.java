@@ -109,6 +109,7 @@ public class GameBase implements Screen {
                 collidable.move();
             }
         }
+
         if (Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE)) {
             game.setScreen(new MainMenuScreen(game));
         }

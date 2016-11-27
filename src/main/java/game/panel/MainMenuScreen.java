@@ -2,21 +2,36 @@ package game.panel;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.*;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
+import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
 import game.Drop;
 import game.GameBase;
 
 public class MainMenuScreen implements Screen {
     final Drop game;
-
-    OrthographicCamera camera;
+    Stage stage;
+    Skin skin;
 
     public MainMenuScreen(final Drop gam) {
+        stage = new Stage();
+        skin = new Skin();
         game = gam;
+        Gdx.input.setInputProcessor(stage);
 
-        camera = new OrthographicCamera();
-        camera.setToOrtho(false, 800, 480);
+        TextButton startGame = this.createButton("Start game");
+        startGame.setPosition(125, 612);
+        startGame.addListener(new ChangeListener() {
+            public void changed(ChangeListener.ChangeEvent event, Actor actor) {
+                game.setScreen(new GameBase(game));
+            }
+        });
+
 
     }
 
@@ -26,19 +41,8 @@ public class MainMenuScreen implements Screen {
     }
 
     public void render(float delta) {
-        Gdx.gl.glClearColor(0, 0, 0.2f, 1);
-        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-
-        camera.update();
-        game.batch.setProjectionMatrix(camera.combined);
-
-        game.batch.begin();
-        game.batch.end();
-
-        if (Gdx.input.isTouched()) {
-            game.setScreen(new GameBase(game));
-            dispose();
-        }
+        stage.draw();
+        System.out.println(Gdx.input.getX() + "," + Gdx.input.getY());
     }
 
     public void resize(int width, int height) {
@@ -59,5 +63,29 @@ public class MainMenuScreen implements Screen {
 
     public void dispose() {
 
+    }
+
+    private TextButton createButton(String text) {
+        Pixmap pixmap = new Pixmap(100, 100, Pixmap.Format.RGBA8888);
+        pixmap.setColor(Color.GREEN);
+        pixmap.fill();
+
+        skin.add("white", new Texture(pixmap));
+
+        BitmapFont bfont = new BitmapFont();
+        skin.add("default", bfont);
+
+        TextButton.TextButtonStyle textButtonStyle = new TextButton.TextButtonStyle();
+        textButtonStyle.up = skin.newDrawable("white", Color.DARK_GRAY);
+        textButtonStyle.down = skin.newDrawable("white", Color.DARK_GRAY);
+        textButtonStyle.checked = skin.newDrawable("white", Color.BLUE);
+        textButtonStyle.over = skin.newDrawable("white", Color.LIGHT_GRAY);
+
+        textButtonStyle.font = skin.getFont("default");
+        skin.add("default", textButtonStyle);
+        final TextButton textButton = new TextButton(text, textButtonStyle);
+        stage.addActor(textButton);
+
+        return textButton;
     }
 }
