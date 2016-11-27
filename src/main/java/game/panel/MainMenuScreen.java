@@ -9,30 +9,27 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
-import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
-import game.Drop;
 import game.GameBase;
+import game.GameScreen;
 
 public class MainMenuScreen implements Screen {
-    final Drop game;
+    final GameBase gameBase;
     Stage stage;
     Skin skin;
 
-    public MainMenuScreen(final Drop gam) {
+    public MainMenuScreen(final GameBase gam) {
         stage = new Stage();
         skin = new Skin();
-        game = gam;
+        gameBase = gam;
         Gdx.input.setInputProcessor(stage);
 
-        TextButton startGame = this.createButton("Start game");
+        TextButton startGame = this.createButton("Start gameBase");
         startGame.setPosition(125, 612);
         startGame.addListener(new ChangeListener() {
             public void changed(ChangeListener.ChangeEvent event, Actor actor) {
-                game.setScreen(new GameBase(game));
+                gameBase.setScreen(new GameScreen(gameBase));
             }
         });
-
-
     }
 
 
@@ -42,7 +39,6 @@ public class MainMenuScreen implements Screen {
 
     public void render(float delta) {
         stage.draw();
-        System.out.println(Gdx.input.getX() + "," + Gdx.input.getY());
     }
 
     public void resize(int width, int height) {

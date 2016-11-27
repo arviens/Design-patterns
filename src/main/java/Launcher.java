@@ -1,6 +1,5 @@
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
-import game.Drop;
 import game.GameBase;
 import helper.Config;
 
@@ -16,6 +15,6 @@ public class Launcher {
 		config.width = gameConfig.getProperties().getWidth();
 		config.height = gameConfig.getProperties().getHeight();
 		config.title = gameConfig.getProperties().getTitle();
-		new LwjglApplication(new Drop(), config);
+		new LwjglApplication(new GameBase(), config);
 	}
 }
