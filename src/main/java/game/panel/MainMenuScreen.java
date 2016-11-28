@@ -23,7 +23,7 @@ public class MainMenuScreen implements Screen {
         gameBase = gam;
         Gdx.input.setInputProcessor(stage);
 
-        TextButton startGame = this.createButton("Start gameBase");
+        TextButton startGame = this.createButton("Start Game");
         startGame.setPosition(125, 612);
         startGame.addListener(new ChangeListener() {
             public void changed(ChangeListener.ChangeEvent event, Actor actor) {
