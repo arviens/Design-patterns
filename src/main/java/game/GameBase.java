@@ -7,13 +7,12 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import game.environment.object.item.ItemType;
-import game.factory.object.ItemFactory;
-import game.panel.MainMenuScreen;
 import game.panel.ShopScreen;
 import util.Drawable;
 import util.DrawableType;
 import util.GameState;
+
+import java.util.ArrayList;
 
 public class GameBase extends Game {
     public SpriteBatch batch;
@@ -35,7 +34,7 @@ public class GameBase extends Game {
         camera.setToOrtho(false, 800, 480);
         batch = new SpriteBatch();
         font = new BitmapFont();
-        this.setScreen(new ShopScreen(this));
+        this.setScreen(new MainMenuScreen(this));
     }
 
     public void render() {
