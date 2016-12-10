@@ -9,12 +9,8 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
-import com.esotericsoftware.yamlbeans.YamlException;
-import com.sun.javaws.Main;
 import game.GameBase;
 
-import java.io.FileNotFoundException;
-import game.GameScreen;
 import util.GameState;
 
 public class MainMenuScreen implements Screen {
@@ -27,42 +23,24 @@ public class MainMenuScreen implements Screen {
     public MainMenuScreen(final GameBase gam) {
 
         gameBase = gam;
-        if (mainMenuScreen == null)
-        {
+        if (mainMenuScreen == null) {
 
-                stage = new Stage();
-                skin = new Skin();
+            stage = new Stage();
+            skin = new Skin();
 
-                Gdx.input.setInputProcessor(stage);
+            Gdx.input.setInputProcessor(stage);
 
-                TextButton startGame = this.createButton("Start Game");
-                startGame.setPosition(125, 612);
-                startGame.setHeight(50);
-            startGame.setWidth(100);
-                startGame.addListener(new ChangeListener() {
-                    public void changed(ChangeListener.ChangeEvent event, Actor actor) {
-                        gameBase.setScreen(new MainMenuScreen(gameBase));
-                    }
-                });
-
-            }
-
-
-
-        TextButton startGame = this.createButton("Start Game");
-        startGame.setPosition(125, 612);
-        startGame.addListener(new ChangeListener() {
-            public void changed(ChangeListener.ChangeEvent event, Actor actor) {
-                gameBase.setGameScreen(GameState.RUN);
-            }
-        });
+            TextButton startGame = this.createButton("Start Game");
+            startGame.setPosition(125, 612);
+            startGame.addListener(new ChangeListener() {
+                public void changed(ChangeListener.ChangeEvent event, Actor actor) {
+                    gameBase.setGameScreen(GameState.RUN);
+                }
+            });
+        }
     }
 
-
-
-    public void show() {
-
-    }
+    public void show() {}
 
     public void render(float delta) {
         stage.draw();
