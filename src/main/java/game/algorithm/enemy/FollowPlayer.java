@@ -23,7 +23,7 @@ public class FollowPlayer extends AbstractCollidable implements IAlgorithm {
             ratioX = Math.abs((float) deltaX / (float) ((Math.abs(deltaX) + Math.abs(deltaY))));
             ratioY = Math.abs((float) deltaY / (float) ((Math.abs(deltaX) + Math.abs(deltaY))));
         }
-        int speed = new Random().nextInt(200);
+        int speed = 333;
         if (deltaX > 0) {
             object.setX(object.getX() - Math.round(speed * Gdx.graphics.getDeltaTime() * ratioX));
         }

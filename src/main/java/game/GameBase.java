@@ -12,20 +12,21 @@ import game.factory.object.ItemFactory;
 import game.panel.GameScreen;
 import game.panel.MainMenuScreen;
 import game.panel.ShopScreen;
+import helper.Config;
 import util.Drawable;
 import util.DrawableType;
+import util.GameProperties;
 import util.GameState;
-
-import java.util.ArrayList;
 
 public class GameBase extends Game {
     public SpriteBatch batch;
     public BitmapFont font;
-    OrthographicCamera camera;
+    public OrthographicCamera camera;
 
     private Screen shopScreen;
     private Screen mainMenuScreen;
     private Screen runScreen;
+
 
 
     public void create() {
@@ -34,11 +35,18 @@ public class GameBase extends Game {
         Drawable.addToMap(DrawableType.ITEM, itemFactory.getAbstractItem(ItemType.HEART));
         Drawable.addToMap(DrawableType.ITEM, itemFactory.getAbstractItem(ItemType.HEART_BAD));
 
-        camera = new OrthographicCamera();
-        camera.setToOrtho(false, 800, 480);
+        GameProperties config = Config.getInstance().getProperties();
+        camera = new OrthographicCamera(config.getWidth(), config.getHeight());
+        camera.setToOrtho(false);
+        camera.position.set(camera.viewportHeight / 2f, camera.viewportHeight / 2f, 0);
+        camera.update();
+
+
+
         batch = new SpriteBatch();
         font = new BitmapFont();
         this.setScreen(new MainMenuScreen(this));
+
     }
 
     public void render() {
@@ -52,7 +60,7 @@ public class GameBase extends Game {
     }
 
     public void setGameScreen(GameState screen) {
-        switch (screen){
+        switch (screen) {
             case SHOP:
                 setScreen(getShopScreen());
                 break;
@@ -65,23 +73,23 @@ public class GameBase extends Game {
     }
 
     private Screen getShopScreen() {
-        if(shopScreen == null){
+        if (shopScreen == null) {
             shopScreen = new ShopScreen(this);
         }
 
         return shopScreen;
     }
 
-    private Screen getMainMenuScreen(){
-        if(mainMenuScreen == null){
+    private Screen getMainMenuScreen() {
+        if (mainMenuScreen == null) {
             mainMenuScreen = new MainMenuScreen(this);
         }
 
         return mainMenuScreen;
     }
 
-    private Screen getRunScreen(){
-        if(runScreen == null){
+    private Screen getRunScreen() {
+        if (runScreen == null) {
             runScreen = new GameScreen(this);
         }
 
