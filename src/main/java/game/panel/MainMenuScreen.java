@@ -2,6 +2,7 @@ package game.panel;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.graphics.*;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.scenes.scene2d.Actor;
@@ -31,10 +32,32 @@ public class MainMenuScreen implements Screen {
             Gdx.input.setInputProcessor(stage);
 
             TextButton startGame = this.createButton("Start Game");
-            startGame.setPosition(125, 612);
+            startGame.setPosition(150, 612);
+            startGame.setHeight(50);
+            startGame.setWidth(100);
             startGame.addListener(new ChangeListener() {
                 public void changed(ChangeListener.ChangeEvent event, Actor actor) {
                     gameBase.setGameScreen(GameState.RUN);
+                }
+            });
+
+            TextButton shop = this.createButton("Shop");
+            shop.setPosition(150, 512);
+            shop.setHeight(50);
+            shop.setWidth(100);
+            shop.addListener(new ChangeListener() {
+                public void changed(ChangeListener.ChangeEvent event, Actor actor) {
+                    gameBase.setGameScreen(GameState.SHOP);
+                }
+            });
+
+            TextButton quit = this.createButton("Quit");
+            quit.setPosition(150, 412);
+            quit.setHeight(50);
+            quit.setWidth(100);
+            quit.addListener(new ChangeListener() {
+                public void changed(ChangeListener.ChangeEvent event, Actor actor) {
+                    System.exit(0);
                 }
             });
         }
@@ -66,7 +89,7 @@ public class MainMenuScreen implements Screen {
 
     }
 
-    private TextButton createButton(String text) {
+    public TextButton createButton(String text) {
         Pixmap pixmap = new Pixmap(100, 100, Pixmap.Format.RGBA8888);
         pixmap.setColor(Color.GREEN);
         pixmap.fill();
