@@ -2,11 +2,18 @@ package game.panel;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.Pixmap;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import game.GameBase;
 import game.environment.abstractObject.item.AbstractItem;
@@ -14,6 +21,7 @@ import game.environment.object.item.HeartItem;
 import game.environment.object.item.ItemType;
 import game.environment.object.item.ShroomItem;
 import util.GameState;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -63,6 +71,17 @@ public class ShopScreen implements Screen {
         stage.addActor(table);
 
         table.setDebug(true);
+
+        TextButton backButton = this.createButton("Back");
+        backButton.setPosition(150, 412);
+        backButton.setHeight(50);
+        backButton.setWidth(100);
+        backButton.addListener(new ChangeListener() {
+            public void changed(ChangeListener.ChangeEvent event, Actor actor) {
+                gameBase.setGameScreen(GameState.MENU);
+            }
+        });
+
     }
 
     public void create() {
@@ -102,7 +121,7 @@ public class ShopScreen implements Screen {
     public void render(float delta) {
         stage.act(Gdx.graphics.getDeltaTime());
         stage.draw();
-        System.out.println("Shop");
+
     }
 
     public void dispose() {
@@ -118,4 +137,30 @@ public class ShopScreen implements Screen {
 
         return arr;
     }
+
+    public  TextButton createButton(String text) {
+        Pixmap pixmap = new Pixmap(100, 100, Pixmap.Format.RGBA8888);
+        pixmap.setColor(Color.GREEN);
+        pixmap.fill();
+
+        skin.add("white", new Texture(pixmap));
+
+        BitmapFont bfont = new BitmapFont();
+        skin.add("default", bfont);
+
+        TextButton.TextButtonStyle textButtonStyle = new TextButton.TextButtonStyle();
+        textButtonStyle.up = skin.newDrawable("white", Color.DARK_GRAY);
+        textButtonStyle.down = skin.newDrawable("white", Color.DARK_GRAY);
+        textButtonStyle.checked = skin.newDrawable("white", Color.BLUE);
+        textButtonStyle.over = skin.newDrawable("white", Color.LIGHT_GRAY);
+
+        textButtonStyle.font = skin.getFont("default");
+        skin.add("default", textButtonStyle);
+        final TextButton textButton = new TextButton(text, textButtonStyle);
+        stage.addActor(textButton);
+
+        return textButton;
+    }
+
+
 }

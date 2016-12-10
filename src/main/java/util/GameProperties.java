@@ -1,6 +1,6 @@
 package util;
 
-public class GameProperties {
+public class  GameProperties {
     private String title;
     private int width;
     private int height;
