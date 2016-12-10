@@ -13,6 +13,7 @@ public abstract class AbstractCollidable {
     private int y;
     private Sprite sprite;
     private IAlgorithm algorithm;
+    private int price;
 
     public int getX() {
         return x;
@@ -54,5 +55,13 @@ public abstract class AbstractCollidable {
 
     public void setAlgorithm(IAlgorithm algorithm) {
         this.algorithm = algorithm;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
     }
 }

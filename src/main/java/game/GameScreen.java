@@ -50,9 +50,7 @@ public class GameScreen implements Screen {
 //        main.row();
 
 //        Drawable.addToMap(DrawableType.PANEL, new ShopScreen());
-        ItemFactory itemFactory = new ItemFactory();
-        Drawable.addToMap(DrawableType.ITEM, itemFactory.getAbstractItem(ItemType.HEART));
-        Drawable.addToMap(DrawableType.ITEM, itemFactory.getAbstractItem(ItemType.HEART_BAD));
+
         Player player = new Player();
 //        Drawable.addToMap(DrawableType.ITEM, item);
         Drawable.addToMap(DrawableType.PLAYER, player);

@@ -1,13 +1,14 @@
 package game.environment.abstractObject.item;
 
 import game.environment.abstractObject.common.AbstractCollidable;
+import game.environment.abstractObject.common.Buyable;
 import game.environment.object.item.Enhancement;
 import game.sound.AbstractSound;
 
 /**
  * Stores information about actor
  */
-public abstract class AbstractItem extends AbstractCollidable {
+public abstract class AbstractItem extends AbstractCollidable implements Buyable {
 
     private long droppedTime;
     //What kind of enhancement actor will give to user
@@ -15,7 +16,8 @@ public abstract class AbstractItem extends AbstractCollidable {
     //What kind of influence
     private int influence;
     private AbstractSound pickUpSound;
-    private int price;
+
+    private String name;
 
     public AbstractItem() {
         droppedTime = System.currentTimeMillis();
@@ -53,11 +55,11 @@ public abstract class AbstractItem extends AbstractCollidable {
         this.pickUpSound = pickUpSound;
     }
 
-    public int getPrice() {
-        return price;
+    public String getName() {
+        return name;
     }
 
-    public void setPrice(int price) {
-        this.price = price;
+    public void setName(String name) {
+        this.name = name;
     }
 }

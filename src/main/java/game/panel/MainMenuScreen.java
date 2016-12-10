@@ -11,6 +11,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import game.GameBase;
 import game.GameScreen;
+import util.GameState;
 
 public class MainMenuScreen implements Screen {
     final GameBase gameBase;
@@ -27,7 +28,7 @@ public class MainMenuScreen implements Screen {
         startGame.setPosition(125, 612);
         startGame.addListener(new ChangeListener() {
             public void changed(ChangeListener.ChangeEvent event, Actor actor) {
-                gameBase.setScreen(new GameScreen(gameBase));
+                gameBase.setGameScreen(GameState.RUN);
             }
         });
     }

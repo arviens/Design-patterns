@@ -1,6 +1,7 @@
 package util;
 
 import game.environment.abstractObject.common.AbstractCollidable;
+import game.environment.abstractObject.item.AbstractItem;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -43,7 +44,7 @@ public class Drawable {
         if (environmentObjects.containsKey(type)) {
             return environmentObjects.get(type);
         }
-        return null;
+        return new ArrayList<AbstractCollidable>();
     }
 
 }

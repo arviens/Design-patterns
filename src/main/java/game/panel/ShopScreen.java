@@ -2,42 +2,67 @@ package game.panel;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.Pixmap;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import com.badlogic.gdx.scenes.scene2d.ui.TextField;
+import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import game.GameBase;
+import game.GameScreen;
+import game.environment.abstractObject.item.AbstractItem;
+import game.environment.object.item.HeartItem;
+import game.environment.object.item.ItemType;
+import game.environment.object.item.ShroomItem;
+import util.GameState;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ShopScreen implements Screen {
     final GameBase gameBase;
     private Table table;
+    private List<AbstractItem> buyableItems;
     Stage stage;
     Skin skin;
 
-    public ShopScreen(GameBase gameBase) {
+    public ShopScreen(final GameBase gameBase) {
+        buyableItems = getBuyableItems();
         this.gameBase = gameBase;
         stage = new Stage();
         skin = new Skin();
         Gdx.input.setInputProcessor(stage);
         skin = new Skin(Gdx.files.internal("src/main/resources/assets/uiskin.json"));
-        Label nameLabel = new Label("Name:", skin);
-        TextField nameText = new TextField("Text", skin);
-        Label addressLabel = new Label("Address:", skin);
-        TextField addressText = new TextField("text", skin);
-
         Table table = new Table();
-        table.add(nameLabel);
-        table.add(nameText).width(100);
-        table.setPosition(200,200);
+        table.setPosition(200, 200);
+        table.add(new Label("Name", skin));
+        table.add(new Label("Price", skin));
+        table.add(new Label("Action", skin));
         table.row();
-        table.add(addressLabel);
-        table.add(addressText).width(100);
+        for (final AbstractItem buyable : buyableItems) {
+            Label buyButton = new Label("Buy", skin);
+            buyButton.addListener(new ClickListener(){
+                public void clicked(InputEvent e, float x, float y){
+                    System.out.println("Buy " + buyable.getName());
+                }
+            });
+
+            table.add(new Label(buyable.getName(), skin));
+            table.add(new Label(String.valueOf(buyable.getPrice()), skin));
+            table.add(buyButton);
+            table.row();
+        }
+
+        Label buyButton = new Label("Buy", skin);
+        buyButton.addListener(new ClickListener(){
+            public void clicked(InputEvent e, float x, float y){
+                gameBase.setGameScreen(GameState.MENU);
+            }
+        });
+        table.add(buyButton);
+
         stage.addActor(table);
 
         table.setDebug(true);
@@ -84,5 +109,15 @@ public class ShopScreen implements Screen {
 
     public void dispose() {
         stage.dispose();
+    }
+
+    private List<AbstractItem> getBuyableItems() {
+        List<AbstractItem> arr = new ArrayList<AbstractItem>();
+        arr.add(new HeartItem(ItemType.HEART));
+        arr.add(new HeartItem(ItemType.HEART_BAD));
+        arr.add(new ShroomItem(ItemType.SHROOM));
+        arr.add(new ShroomItem(ItemType.SHROOM_BAD));
+
+        return arr;
     }
 }
