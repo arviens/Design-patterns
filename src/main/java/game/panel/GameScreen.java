@@ -1,4 +1,4 @@
-package game;
+package game.panel;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
@@ -11,6 +11,7 @@ import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
+import game.GameBase;
 import game.environment.abstractObject.common.AbstractCollidable;
 import game.environment.object.item.HeartItem;
 import game.environment.object.item.ItemType;
@@ -34,6 +35,7 @@ public class GameScreen implements Screen {
     private World world;
     private HeartItem item;
     private GameState gameState;
+    private static GameScreen gameScreen;
 
     public GameScreen(final GameBase gameBase) {
         this.gameBase = gameBase;

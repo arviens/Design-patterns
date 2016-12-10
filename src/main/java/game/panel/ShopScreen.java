@@ -80,6 +80,7 @@ public class ShopScreen implements Screen {
     public void render(float delta) {
         stage.act(Gdx.graphics.getDeltaTime());
         stage.draw();
+        System.out.println("Shop");
     }
 
     public void dispose() {

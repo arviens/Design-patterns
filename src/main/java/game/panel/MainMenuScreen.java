@@ -9,28 +9,46 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
+import com.esotericsoftware.yamlbeans.YamlException;
+import com.sun.javaws.Main;
 import game.GameBase;
-import game.GameScreen;
+
+import java.io.FileNotFoundException;
 
 public class MainMenuScreen implements Screen {
     final GameBase gameBase;
     Stage stage;
     Skin skin;
+    // TODO visu viewu singleton padaryt ir itemus reikalingus ipist i parametrus
+    public static MainMenuScreen mainMenuScreen;
 
     public MainMenuScreen(final GameBase gam) {
-        stage = new Stage();
-        skin = new Skin();
-        gameBase = gam;
-        Gdx.input.setInputProcessor(stage);
 
-        TextButton startGame = this.createButton("Start Game");
-        startGame.setPosition(125, 612);
-        startGame.addListener(new ChangeListener() {
-            public void changed(ChangeListener.ChangeEvent event, Actor actor) {
-                gameBase.setScreen(new GameScreen(gameBase));
+        gameBase = gam;
+        if (mainMenuScreen == null)
+        {
+
+                stage = new Stage();
+                skin = new Skin();
+
+                Gdx.input.setInputProcessor(stage);
+
+                TextButton startGame = this.createButton("Start Game");
+                startGame.setPosition(125, 612);
+                startGame.setHeight(50);
+            startGame.setWidth(100);
+                startGame.addListener(new ChangeListener() {
+                    public void changed(ChangeListener.ChangeEvent event, Actor actor) {
+                        gameBase.setScreen(new MainMenuScreen(gameBase));
+                    }
+                });
+
             }
-        });
+
+
+
     }
+
 
 
     public void show() {
