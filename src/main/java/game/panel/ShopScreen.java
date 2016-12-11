@@ -21,17 +21,16 @@ import game.environment.object.item.HeartItem;
 import game.environment.object.item.ItemType;
 import game.environment.object.item.ShroomItem;
 import util.GameState;
+import util.ScreenComponentDrawing;
 
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ShopScreen implements Screen {
+public class ShopScreen extends ScreenComponentDrawing implements Screen {
     final GameBase gameBase;
     private Table table;
     private List<AbstractItem> buyableItems;
-    Stage stage;
-    Skin skin;
 
     public ShopScreen(final GameBase gameBase) {
         buyableItems = getBuyableItems();
@@ -48,8 +47,8 @@ public class ShopScreen implements Screen {
         table.row();
         for (final AbstractItem buyable : buyableItems) {
             Label buyButton = new Label("Buy", skin);
-            buyButton.addListener(new ClickListener(){
-                public void clicked(InputEvent e, float x, float y){
+            buyButton.addListener(new ClickListener() {
+                public void clicked(InputEvent e, float x, float y) {
                     System.out.println("Buy " + buyable.getName());
                 }
             });
@@ -61,8 +60,8 @@ public class ShopScreen implements Screen {
         }
 
         Label buyButton = new Label("Buy", skin);
-        buyButton.addListener(new ClickListener(){
-            public void clicked(InputEvent e, float x, float y){
+        buyButton.addListener(new ClickListener() {
+            public void clicked(InputEvent e, float x, float y) {
                 gameBase.setGameScreen(GameState.MENU);
             }
         });
@@ -130,37 +129,10 @@ public class ShopScreen implements Screen {
 
     private List<AbstractItem> getBuyableItems() {
         List<AbstractItem> arr = new ArrayList<AbstractItem>();
-        arr.add(new HeartItem(ItemType.HEART));
-        arr.add(new HeartItem(ItemType.HEART_BAD));
-        arr.add(new ShroomItem(ItemType.SHROOM));
-        arr.add(new ShroomItem(ItemType.SHROOM_BAD));
+
+        arr.add(new HeartItem());
+        arr.add(new ShroomItem());
 
         return arr;
     }
-
-    public  TextButton createButton(String text) {
-        Pixmap pixmap = new Pixmap(100, 100, Pixmap.Format.RGBA8888);
-        pixmap.setColor(Color.GREEN);
-        pixmap.fill();
-
-        skin.add("white", new Texture(pixmap));
-
-        BitmapFont bfont = new BitmapFont();
-        skin.add("default", bfont);
-
-        TextButton.TextButtonStyle textButtonStyle = new TextButton.TextButtonStyle();
-        textButtonStyle.up = skin.newDrawable("white", Color.DARK_GRAY);
-        textButtonStyle.down = skin.newDrawable("white", Color.DARK_GRAY);
-        textButtonStyle.checked = skin.newDrawable("white", Color.BLUE);
-        textButtonStyle.over = skin.newDrawable("white", Color.LIGHT_GRAY);
-
-        textButtonStyle.font = skin.getFont("default");
-        skin.add("default", textButtonStyle);
-        final TextButton textButton = new TextButton(text, textButtonStyle);
-        stage.addActor(textButton);
-
-        return textButton;
-    }
-
-
 }

@@ -2,9 +2,7 @@ package game.factory.object;
 
 import game.environment.abstractObject.item.AbstractItem;
 import game.environment.abstractObject.weapon.AbstractWeapon;
-import game.environment.object.item.HeartItem;
-import game.environment.object.item.ItemType;
-import game.environment.object.item.ShroomItem;
+import game.environment.object.item.*;
 import game.environment.object.weapon.WeaponType;
 
 public class ItemFactory extends AbstractObjectFactory {
@@ -13,12 +11,16 @@ public class ItemFactory extends AbstractObjectFactory {
         AbstractItem abstractItem = null;
         switch (itemType) {
             case HEART:
+                abstractItem = new HeartItem();
+                break;
             case HEART_BAD:
-                abstractItem = new HeartItem(itemType);
+                abstractItem = new BadHeartItem();
                 break;
             case SHROOM:
+                abstractItem = new ShroomItem();
+                break;
             case SHROOM_BAD:
-                abstractItem = new ShroomItem(itemType);
+                abstractItem = new BadShroomItem();
                 break;
         }
         return abstractItem;

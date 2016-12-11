@@ -1,10 +1,8 @@
 package game.environment.abstractObject.enemy;
 
+import game.command.IEnemy;
 import game.environment.abstractObject.common.AbstractActor;
 
-/**
- * Created by arviens on 16.10.17.
- */
-public abstract class AbstractEnemy extends AbstractActor {
+public abstract class AbstractEnemy extends AbstractActor implements IEnemy {
 
 }

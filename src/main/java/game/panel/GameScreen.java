@@ -12,7 +12,12 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
 import game.GameBase;
+import game.command.enemy.EnemyControl;
+import game.command.enemy.zombie.ZombieAttack;
+import game.command.enemy.zombie.ZombieFlee;
 import game.environment.abstractObject.common.AbstractCollidable;
+import game.environment.abstractObject.enemy.AbstractEnemy;
+import game.environment.object.enemy.ZombieEnemy;
 import game.environment.object.item.HeartItem;
 import game.environment.object.item.ItemType;
 import game.environment.object.player.Player;
@@ -41,7 +46,7 @@ public class GameScreen implements Screen {
         img = new Texture("assets/images/batman.png");
 
         player = new Player();
-
+        Drawable.addToMap(DrawableType.ENEMY,new ZombieEnemy());
         Box2D.init();
         world = new World(new Vector2(0, -98f), true);
         Drawable.addToMap(DrawableType.PLAYER, player);
@@ -82,16 +87,33 @@ public class GameScreen implements Screen {
 
 
         if (Gdx.input.isKeyJustPressed(Input.Keys.UP)) {
-            body.setLinearVelocity(body.getLinearVelocity().x,50);
+            body.setLinearVelocity(body.getLinearVelocity().x, 500);
         }
         if (Gdx.input.isKeyJustPressed(Input.Keys.DOWN)) {
-            body.setLinearVelocity(body.getLinearVelocity().x,-50);
+            body.setLinearVelocity(body.getLinearVelocity().x, -500);
         }
         if (Gdx.input.isKeyJustPressed(Input.Keys.LEFT)) {
-            body.setLinearVelocity(-50,body.getLinearVelocity().y);
+            body.setLinearVelocity(-500, body.getLinearVelocity().y);
         }
         if (Gdx.input.isKeyJustPressed(Input.Keys.RIGHT)) {
-            body.setLinearVelocity(50,body.getLinearVelocity().y);
+            body.setLinearVelocity(500, body.getLinearVelocity().y);
+        }
+
+
+        if (Gdx.input.isKeyJustPressed(Input.Keys.F)) {
+            EnemyControl enemyControl = null;
+            for (AbstractEnemy enemy : Drawable.getLists().getEnemies()) {
+                enemyControl = new EnemyControl(new ZombieFlee(enemy));
+                enemyControl.action();
+            }
+        }
+
+        if (Gdx.input.isKeyJustPressed(Input.Keys.A)) {
+            EnemyControl enemyControl = null;
+            for (AbstractEnemy enemy : Drawable.getLists().getEnemies()) {
+                enemyControl = new EnemyControl(new ZombieAttack(enemy));
+                enemyControl.action();
+            }
         }
 
         if (Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE)) {

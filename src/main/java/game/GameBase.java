@@ -23,9 +23,9 @@ public class GameBase extends Game {
     public BitmapFont font;
     public OrthographicCamera camera;
 
-    private Screen shopScreen;
-    private Screen mainMenuScreen;
-    private Screen runScreen;
+    private ShopScreen shopScreen;
+    private MainMenuScreen mainMenuScreen;
+    private GameScreen runScreen;
 
 
 
@@ -45,7 +45,7 @@ public class GameBase extends Game {
 
         batch = new SpriteBatch();
         font = new BitmapFont();
-        this.setScreen(new MainMenuScreen(this));
+        setGameScreen(GameState.MENU);
 
     }
 
@@ -63,9 +63,11 @@ public class GameBase extends Game {
         switch (screen) {
             case SHOP:
                 setScreen(getShopScreen());
+                Gdx.input.setInputProcessor(shopScreen.stage);
                 break;
             case MENU:
                 setScreen(getMainMenuScreen());
+                Gdx.input.setInputProcessor(mainMenuScreen.stage);
                 break;
             case RUN:
                 setScreen(getRunScreen());

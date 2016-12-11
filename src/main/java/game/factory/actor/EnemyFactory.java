@@ -2,6 +2,7 @@ package game.factory.actor;
 
 import game.environment.abstractObject.enemy.AbstractEnemy;
 import game.environment.object.enemy.EnemyType;
+import game.environment.object.enemy.ZombieEnemy;
 
 /**
  * Enemy factory used for creating enemies
@@ -9,14 +10,15 @@ import game.environment.object.enemy.EnemyType;
 public class EnemyFactory extends AbstractActorFactory {
 
     AbstractEnemy getAbstractEnemy(EnemyType enemyType) {
+        AbstractEnemy enemy = null;
         switch (enemyType){
             case PHOENIX:
                 System.out.println("Pheonix");
                 break;
             case ZOMBIE:
-                System.out.println("Zombie");
+                enemy = new ZombieEnemy();
                 break;
         }
-        return null;
+        return enemy;
     }
 }

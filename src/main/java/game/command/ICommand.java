@@ -1,5 +1,5 @@
 package game.command;
 
-public interface Order {
+public interface ICommand {
     void execute();
 }

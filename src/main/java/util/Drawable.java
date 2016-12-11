@@ -1,7 +1,9 @@
 package util;
 
 import game.environment.abstractObject.common.AbstractCollidable;
+import game.environment.abstractObject.enemy.AbstractEnemy;
 import game.environment.abstractObject.item.AbstractItem;
+import game.environment.abstractObject.player.AbstractPlayer;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -10,6 +12,8 @@ import java.util.Map;
 
 public class Drawable {
     private static Map<DrawableType, List<AbstractCollidable>> environmentObjects = new HashMap<DrawableType, List<AbstractCollidable>>();
+
+    private static DrawableAction lists;
 
     private static Drawable instance;
 
@@ -20,6 +24,7 @@ public class Drawable {
 
     private static synchronized void createInstance() {
         if (instance == null) {
+            lists = new DrawableAction();
             instance = new Drawable();
         }
     }
@@ -29,15 +34,17 @@ public class Drawable {
         return environmentObjects;
     }
 
-    public static synchronized void addToMap(DrawableType key, AbstractCollidable object) {
+    public static synchronized void addToMap(DrawableType key, Object object) {
         createInstance();
         if (environmentObjects.containsKey(key)) {
-            environmentObjects.get(key).add(object);
+            environmentObjects.get(key).add((AbstractCollidable) object);
         } else {
             List<AbstractCollidable> tempList = new ArrayList<AbstractCollidable>();
-            tempList.add(object);
+            tempList.add((AbstractCollidable) object);
             environmentObjects.put(key, tempList);
         }
+
+        addToLists(key, object);
     }
 
     public static synchronized List<AbstractCollidable> getByType(DrawableType type) {
@@ -47,6 +54,23 @@ public class Drawable {
         return new ArrayList<AbstractCollidable>();
     }
 
+    public static synchronized DrawableAction getLists() {
+        return lists;
+    }
+
+    private static synchronized void addToLists(DrawableType type, Object object) {
+        switch (type) {
+            case ENEMY:
+                lists.addEnemy((AbstractEnemy) object);
+                break;
+            case PLAYER:
+                lists.addPlayer((AbstractPlayer) object);
+                break;
+            case ITEM:
+                lists.addItem((AbstractItem) object);
+                break;
+        }
+    }
 }
 
 

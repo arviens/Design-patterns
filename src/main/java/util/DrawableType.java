@@ -4,5 +4,5 @@ public enum DrawableType {
     ENEMY,
     PLAYER,
     ITEM,
-    PANEL
+    PLATFORM
 }
