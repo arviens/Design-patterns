@@ -13,8 +13,5 @@ public class BadHeartItem extends AbstractItem {
 
         setEnhancement(Enhancement.HEALTH);
         setPrice(256);
-
-
-        setAlgorithm(new FollowPlayer());
     }
 }

@@ -22,7 +22,23 @@ public class ItemFactory extends AbstractObjectFactory {
             case SHROOM_BAD:
                 abstractItem = new BadShroomItem();
                 break;
+            case BLUE_GEM:
+                abstractItem = new BlueGemItem();
+                break;
+            case COIN:
+                abstractItem = new CoinItem();
+                break;
+            case GREEN_GEM:
+                abstractItem = new GreenGemItem();
+                break;
+            case RED_GEM:
+                abstractItem = new RedGemItem();
+                break;
+            case YELLOW_GEM:
+                abstractItem = new YellowGemItem();
+                break;
         }
+
         return abstractItem;
     }
 

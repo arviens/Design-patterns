@@ -5,4 +5,9 @@ public enum ItemType {
     SHROOM,
     HEART_BAD,
     SHROOM_BAD,
+    BLUE_GEM,
+    GREEN_GEM,
+    RED_GEM,
+    YELLOW_GEM,
+    COIN
 }

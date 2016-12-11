@@ -14,7 +14,5 @@ public class HeartItem extends AbstractItem {
         setSprite(getSpriteByName(HEART_SPRITE));
         setEnhancement(Enhancement.HEALTH);
         setPrice(256);
-
-        setAlgorithm(new FollowPlayer());
     }
 }

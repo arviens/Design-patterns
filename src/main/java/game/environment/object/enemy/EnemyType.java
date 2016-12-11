@@ -1,6 +1,8 @@
 package game.environment.object.enemy;
 
 public enum EnemyType {
-    ZOMBIE,
-    PHOENIX,
+    BLOCK_MAD,
+    BLOCK_SAD,
+    SNAIL,
+    FISH,
 }

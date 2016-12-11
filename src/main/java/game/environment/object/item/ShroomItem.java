@@ -8,9 +8,7 @@ public class ShroomItem extends AbstractItem {
     public ShroomItem() {
         setName("Shroom");
         setSprite(getSpriteByName(MUSHROOM_BROWN_SPRITE));
-
         setPrice(123);
-
         setEnhancement(Enhancement.HEALTH);
     }
 }
