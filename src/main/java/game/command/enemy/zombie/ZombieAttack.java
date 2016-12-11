@@ -14,4 +14,8 @@ public class ZombieAttack implements ICommand {
         enemy.attack();
     }
 
+    public void setEnemy(IEnemy enemy) {
+        this.enemy = enemy;
+    }
+
 }

@@ -37,7 +37,6 @@ public class GameScreen implements Screen {
         img = new Texture("assets/images/batman.png");
 
         player = new Player();
-        Drawable.addToMap(DrawableType.ENEMY,new BlockMadEnemy());
         Box2D.init();
         world = new World(new Vector2(0, -98f), true);
         Drawable.addToMap(DrawableType.PLAYER, player);
@@ -92,11 +91,7 @@ public class GameScreen implements Screen {
 
 
         if (Gdx.input.isKeyJustPressed(Input.Keys.F)) {
-            EnemyControl enemyControl = null;
-            for (AbstractEnemy enemy : Drawable.getLists().getEnemies()) {
-                enemyControl = new EnemyControl(new ZombieFlee(enemy));
-                enemyControl.action();
-            }
+            gameBase.commander.notifyObserver(new ZombieFlee());
         }
 
         if (Gdx.input.isKeyJustPressed(Input.Keys.A)) {
