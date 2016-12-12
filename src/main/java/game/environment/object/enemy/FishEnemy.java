@@ -27,10 +27,6 @@ public class FishEnemy extends AbstractEnemy {
 
     }
 
-    public void update(EnemyType enemyType, ICommand cmd) {
-
-    }
-
     public void update(ICommand cmd) {
         EnemyControl enemyControl = new EnemyControl(cmd);
         enemyControl.action();

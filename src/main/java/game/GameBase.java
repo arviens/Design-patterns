@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import game.environment.abstractObject.enemy.AbstractEnemy;
 import game.environment.object.enemy.EnemyType;
 import game.environment.object.item.ItemType;
 import game.factory.actor.EnemyFactory;
@@ -36,8 +37,12 @@ public class GameBase extends Game {
 
         commander = new Commander();
         EnemyFactory enemyFactory = new EnemyFactory(commander);
-        Drawable.addToMap(DrawableType.ENEMY,enemyFactory.getAbstractEnemy(EnemyType.BLOCK_MAD));
-        Drawable.addToMap(DrawableType.ENEMY,enemyFactory.getAbstractEnemy(EnemyType.BLOCK_SAD));
+        AbstractEnemy blockSad = enemyFactory.getAbstractEnemy(EnemyType.BLOCK_SAD);
+        AbstractEnemy blockMad = enemyFactory.getAbstractEnemy(EnemyType.BLOCK_MAD);
+        commander.register(blockSad);
+        commander.register(blockMad);
+        Drawable.addToMap(DrawableType.ENEMY,blockSad);
+        Drawable.addToMap(DrawableType.ENEMY,blockMad);
         ItemFactory itemFactory = new ItemFactory();
         Drawable.addToMap(DrawableType.ITEM, itemFactory.getAbstractItem(ItemType.HEART));
         Drawable.addToMap(DrawableType.ITEM, itemFactory.getAbstractItem(ItemType.HEART_BAD));

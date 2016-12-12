@@ -26,11 +26,9 @@ public class BlockSadEnemy extends AbstractEnemy {
     public void follow() {
 
     }
-    public void update(EnemyType enemyType, ICommand cmd) {
-
-    }
 
     public void update(ICommand cmd) {
+        cmd.setEnemy(this);
         EnemyControl enemyControl = new EnemyControl(cmd);
         enemyControl.action();
     }

@@ -6,6 +6,9 @@ import game.command.IEnemy;
 public class ZombieAttack implements ICommand {
     IEnemy enemy;
 
+    public ZombieAttack() {
+    }
+
     public ZombieAttack(IEnemy enemy) {
         this.enemy = enemy;
     }

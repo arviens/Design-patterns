@@ -14,9 +14,7 @@ import java.util.Observer;
  * Created by kalafioras on 2016-12-11.
  */
 public class Commander implements ISubject {
-
     private ArrayList<IObserver> observers;
-
 
     public Commander() {
         this.observers = new ArrayList<IObserver>();
@@ -39,7 +37,6 @@ public class Commander implements ISubject {
     public void notifyObserver(ICommand cmd) {
         for(IObserver observer : observers)
         {
-
             observer.update(cmd);
         }
     }

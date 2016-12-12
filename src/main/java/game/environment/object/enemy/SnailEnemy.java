@@ -10,8 +10,6 @@ import game.observer.Commander;
 public class SnailEnemy extends AbstractEnemy {
     private final static String SNAIL_SPRITE = "src/main/resources/assets/sprites/enemies/snail.png";
 
-
-
     public SnailEnemy(Commander commander) {
         super(commander);
         setSprite(getSpriteByName(SNAIL_SPRITE));
@@ -26,10 +24,6 @@ public class SnailEnemy extends AbstractEnemy {
     }
 
     public void follow() {
-
-    }
-
-    public void update(EnemyType enemyType, ICommand cmd) {
 
     }
 

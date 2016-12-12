@@ -26,11 +26,6 @@ public class BlockMadEnemy extends AbstractEnemy {
     }
 
     public void follow() {
-
-    }
-
-    public void update(EnemyType enemyType, ICommand cmd) {
-
     }
 
     public void update(ICommand cmd) {

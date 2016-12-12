@@ -95,11 +95,7 @@ public class GameScreen implements Screen {
         }
 
         if (Gdx.input.isKeyJustPressed(Input.Keys.A)) {
-            EnemyControl enemyControl = null;
-            for (AbstractEnemy enemy : Drawable.getLists().getEnemies()) {
-                enemyControl = new EnemyControl(new ZombieAttack(enemy));
-                enemyControl.action();
-            }
+            gameBase.commander.notifyObserver(new ZombieAttack());
         }
 
         if (Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE)) {
