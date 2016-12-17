@@ -9,14 +9,14 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import game.environment.abstractObject.enemy.AbstractEnemy;
 import game.environment.object.enemy.EnemyType;
-import game.environment.object.item.ItemType;
 import game.factory.actor.EnemyFactory;
-import game.factory.object.ItemFactory;
 import game.observer.Commander;
 import game.panel.GameScreen;
 import game.panel.MainMenuScreen;
 import game.panel.ShopScreen;
 import helper.Config;
+import helper.logger.Logger;
+import helper.logger.LoggerLevel;
 import util.Drawable;
 import util.DrawableType;
 import util.GameProperties;
@@ -34,22 +34,21 @@ public class GameBase extends Game {
 
 
     public void create() {
-
+        Logger.log(LoggerLevel.DEBUG, "Test msg");
         commander = new Commander();
         EnemyFactory enemyFactory = new EnemyFactory(commander);
         AbstractEnemy blockSad = enemyFactory.getAbstractEnemy(EnemyType.BLOCK_SAD);
         AbstractEnemy blockMad = enemyFactory.getAbstractEnemy(EnemyType.BLOCK_MAD);
         commander.register(blockSad);
         commander.register(blockMad);
-        Drawable.addToMap(DrawableType.ENEMY,blockSad);
-        Drawable.addToMap(DrawableType.ENEMY,blockMad);
+        Drawable.addToMap(DrawableType.ENEMY, blockSad);
+        Drawable.addToMap(DrawableType.ENEMY, blockMad);
 
         GameProperties config = Config.getInstance().getProperties();
         camera = new OrthographicCamera(config.getWidth(), config.getHeight());
         camera.setToOrtho(false);
         camera.position.set(camera.viewportHeight / 2f, camera.viewportHeight / 2f, 0);
         camera.update();
-
 
 
         batch = new SpriteBatch();
