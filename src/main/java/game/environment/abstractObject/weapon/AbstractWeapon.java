@@ -1,6 +1,7 @@
 package game.environment.abstractObject.weapon;
 
 import game.environment.abstractObject.common.AbstractCollidable;
+import game.environment.object.item.Enhancement;
 import game.sound.AbstractSound;
 
 /**
@@ -8,7 +9,6 @@ import game.sound.AbstractSound;
  */
 public abstract class AbstractWeapon extends AbstractCollidable {
     private AbstractSound shootingSound;
-    private AbstractSound pickUpSound;
     private int damage;
 
     public AbstractSound getShootingSound() {
@@ -34,4 +34,48 @@ public abstract class AbstractWeapon extends AbstractCollidable {
     public void setDamage(int damage) {
         this.damage = damage;
     }
+
+
+
+
+
+
+    private long droppedTime;
+    //What kind of enhancement actor will give to user
+    private Enhancement enhancement;
+    //What kind of influence
+    private int influence;
+    private AbstractSound pickUpSound;
+
+    private String name;
+
+    public long getDroppedTime() {
+        return droppedTime;
+    }
+
+    public void setDroppedTime(long droppedTime) {
+        this.droppedTime = droppedTime;
+    }
+
+    public int getInfluence() {
+        return influence;
+    }
+
+    public void setInfluence(int influence) {
+        this.influence = influence;
+    }
+
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+
+
+
+
 }

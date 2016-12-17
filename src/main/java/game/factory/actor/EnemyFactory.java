@@ -1,10 +1,7 @@
 package game.factory.actor;
 
 import game.environment.abstractObject.enemy.AbstractEnemy;
-import game.environment.object.enemy.BlockSadEnemy;
-import game.environment.object.enemy.EnemyType;
-import game.environment.object.enemy.BlockMadEnemy;
-import game.environment.object.enemy.FishEnemy;
+import game.environment.object.enemy.*;
 import game.observer.Commander;
 
 /**
@@ -19,21 +16,17 @@ public class EnemyFactory extends AbstractActorFactory {
     }
 
     public AbstractEnemy getAbstractEnemy(EnemyType enemyType) {
-        AbstractEnemy enemy = null;
         switch (enemyType) {
             case BLOCK_MAD:
-                enemy = new BlockMadEnemy(commander);
-                break;
+                return new BlockMadEnemy(commander);
             case BLOCK_SAD:
-                enemy = new BlockSadEnemy(commander);
-                break;
+                return new BlockSadEnemy(commander);
             case FISH:
-                enemy = new FishEnemy(commander);
-                break;
+                return new FishEnemy(commander);
             case SNAIL:
-                enemy = new FishEnemy(commander);
-                break;
+                return new FishEnemy(commander);
+            default:
+                return new NullEnemy(commander);
         }
-        return enemy;
     }
 }

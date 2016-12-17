@@ -12,4 +12,9 @@ public class BadShroomItem extends AbstractItem {
         setPrice(123);
         setEnhancement(Enhancement.HEALTH);
     }
+    @Override
+    public boolean isNull()
+    {
+        return false;
+    }
 }

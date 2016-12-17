@@ -7,34 +7,37 @@ import game.command.enemy.EnemyControl;
 import game.environment.abstractObject.enemy.AbstractEnemy;
 import game.observer.Commander;
 
-public class BlockSadEnemy extends AbstractEnemy {
+/**
+ * Created by kalafioras on 2016-12-17.
+ */
+public class NullEnemy extends AbstractEnemy {
     private final static String BLOCK_SAD_SPRITE = "src/main/resources/assets/sprites/enemies/blockerSad.png";
 
-    public BlockSadEnemy(Commander commander) {
+    public NullEnemy(Commander commander) {
         super(commander);
-        setSprite(getSpriteByName(BLOCK_SAD_SPRITE));
-    }
-
-    public void attack() {
-        setAlgorithm(new FollowPlayer());
-    }
-
-    public void flee() {
-        setAlgorithm(new MoveRandom());
-    }
-
-    public void follow() {
-
     }
 
     public void update(ICommand cmd) {
-        cmd.setEnemy(this);
-        EnemyControl enemyControl = new EnemyControl(cmd);
-        enemyControl.action();
+        System.out.println("Operation not supported");
     }
+
     @Override
     public boolean isNull()
     {
-        return false;
+        return true;
+    }
+
+    public void attack() {
+        System.out.println("Operation not suported");
+    }
+
+    public void flee() {
+        System.out.println("Operation not suported");
+
+    }
+
+    public void follow() {
+        System.out.println("Operation not suported");
+
     }
 }

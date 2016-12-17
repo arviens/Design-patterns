@@ -33,4 +33,9 @@ public class BlockMadEnemy extends AbstractEnemy {
             EnemyControl enemyControl = new EnemyControl(cmd);
             enemyControl.action();
     }
+    @Override
+    public boolean isNull()
+    {
+        return false;
+    }
 }

@@ -64,4 +64,5 @@ public abstract class AbstractCollidable {
     public void setPrice(int price) {
         this.price = price;
     }
+    public abstract boolean isNull();
 }

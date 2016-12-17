@@ -13,4 +13,9 @@ public class RedGemItem extends AbstractItem {
         setEnhancement(Enhancement.HEALTH);
         setPrice(256);
     }
+    @Override
+    public boolean isNull()
+    {
+        return false;
+    }
 }

@@ -11,4 +11,9 @@ public class ShroomItem extends AbstractItem {
         setPrice(123);
         setEnhancement(Enhancement.HEALTH);
     }
+    @Override
+    public boolean isNull()
+    {
+        return false;
+    }
 }

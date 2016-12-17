@@ -8,38 +8,28 @@ import game.environment.object.weapon.WeaponType;
 public class ItemFactory extends AbstractObjectFactory {
 
     public AbstractItem getAbstractItem(ItemType itemType) {
-        AbstractItem abstractItem = null;
         switch (itemType) {
             case HEART:
-                abstractItem = new HeartItem();
-                break;
+                return new HeartItem();
             case HEART_BAD:
-                abstractItem = new BadHeartItem();
-                break;
+                return new BadHeartItem();
             case SHROOM:
-                abstractItem = new ShroomItem();
-                break;
+                return new ShroomItem();
             case SHROOM_BAD:
-                abstractItem = new BadShroomItem();
-                break;
+                return new BadShroomItem();
             case BLUE_GEM:
-                abstractItem = new BlueGemItem();
-                break;
+                return new BlueGemItem();
             case COIN:
-                abstractItem = new CoinItem();
-                break;
+                return new CoinItem();
             case GREEN_GEM:
-                abstractItem = new GreenGemItem();
-                break;
+                return new GreenGemItem();
             case RED_GEM:
-                abstractItem = new RedGemItem();
-                break;
+                return new RedGemItem();
             case YELLOW_GEM:
-                abstractItem = new YellowGemItem();
-                break;
+                return new YellowGemItem();
+            default:
+                return new NullItem();
         }
-
-        return abstractItem;
     }
 
     public AbstractWeapon getAbstractWeapon(WeaponType weaponType) {
