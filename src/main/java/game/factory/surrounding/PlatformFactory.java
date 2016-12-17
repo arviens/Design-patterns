@@ -3,6 +3,7 @@ package game.factory.surrounding;
 import game.environment.abstractObject.surrounding.obstacle.AbstractObstacle;
 import game.environment.abstractObject.surrounding.platform.AbstractPlatform;
 import game.environment.object.surrounding.obstacle.ObstacleType;
+import game.environment.object.surrounding.platform.DefaultPlatform;
 import game.environment.object.surrounding.platform.PlatformType;
 
 /**
@@ -10,16 +11,14 @@ import game.environment.object.surrounding.platform.PlatformType;
  */
 public class PlatformFactory extends AbstractSurroundingFactory {
 
-    AbstractObstacle getObstacle(ObstacleType type) {
+    public AbstractObstacle getObstacle(ObstacleType type) {
         return null;
     }
 
-    AbstractPlatform getPlatform(PlatformType platformType)
-    {
-        switch (platformType){
+    public AbstractPlatform getPlatform(PlatformType platformType) {
+        switch (platformType) {
             case DEFAULT:
-                System.out.println("default");
-                break;
+                return new DefaultPlatform();
             case TEMPORARY:
                 System.out.println("temporary");
             case SPIKE:

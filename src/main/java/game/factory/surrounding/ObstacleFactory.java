@@ -10,7 +10,7 @@ import game.environment.object.surrounding.platform.PlatformType;
  */
 public class ObstacleFactory extends AbstractSurroundingFactory {
 
-     AbstractObstacle getObstacle(ObstacleType obstacleType)
+     public AbstractObstacle getObstacle(ObstacleType obstacleType)
      {
          switch (obstacleType){
              case SPIKE:
@@ -25,7 +25,7 @@ public class ObstacleFactory extends AbstractSurroundingFactory {
          return null;
      }
 
-     AbstractPlatform getPlatform(PlatformType type)
+     public AbstractPlatform getPlatform(PlatformType type)
      {
          return null;
      }

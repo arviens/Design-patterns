@@ -9,7 +9,6 @@ import util.Drawable;
 import util.DrawableType;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -59,6 +58,7 @@ public abstract class AbstractPlayer extends AbstractActor {
             AbstractWeapon firstWeapon = weapons.get(0);
             firstWeapon.setX(this.getX());
             firstWeapon.setY(this.getY());
+            firstWeapon.staticBody();
             Drawable.addToMap(DrawableType.WEAPON, firstWeapon);
             weapons.remove(firstWeapon);
             return true;

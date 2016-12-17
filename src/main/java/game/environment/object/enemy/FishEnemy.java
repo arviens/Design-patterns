@@ -5,6 +5,7 @@ import game.algorithm.item.MoveRandom;
 import game.command.ICommand;
 import game.command.enemy.EnemyControl;
 import game.environment.abstractObject.enemy.AbstractEnemy;
+import game.factory.SpriteFactory;
 import game.observer.Commander;
 
 public class FishEnemy extends AbstractEnemy {
@@ -12,7 +13,7 @@ public class FishEnemy extends AbstractEnemy {
 
     public FishEnemy(Commander commander) {
         super(commander);
-        setSprite(getSpriteByName(FISH_SPRITE));
+        setSprite(SpriteFactory.getSprite(FISH_SPRITE));
     }
 
     public void attack() {

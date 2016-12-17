@@ -6,6 +6,7 @@ import game.command.ICommand;
 import game.command.enemy.EnemyControl;
 import game.command.enemy.zombie.ZombieFlee;
 import game.environment.abstractObject.enemy.AbstractEnemy;
+import game.factory.SpriteFactory;
 import game.observer.Commander;
 import util.Drawable;
 
@@ -14,7 +15,7 @@ public class BlockMadEnemy extends AbstractEnemy {
 
     public BlockMadEnemy(Commander commander) {
         super(commander);
-        setSprite(getSpriteByName(BLOCK_MAD_SPRITE));
+        setSprite(SpriteFactory.getSprite(BLOCK_MAD_SPRITE));
     }
 
     public void attack() {

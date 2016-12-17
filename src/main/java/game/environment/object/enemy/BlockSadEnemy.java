@@ -5,6 +5,7 @@ import game.algorithm.item.MoveRandom;
 import game.command.ICommand;
 import game.command.enemy.EnemyControl;
 import game.environment.abstractObject.enemy.AbstractEnemy;
+import game.factory.SpriteFactory;
 import game.observer.Commander;
 
 public class BlockSadEnemy extends AbstractEnemy {
@@ -12,7 +13,7 @@ public class BlockSadEnemy extends AbstractEnemy {
 
     public BlockSadEnemy(Commander commander) {
         super(commander);
-        setSprite(getSpriteByName(BLOCK_SAD_SPRITE));
+        setSprite(SpriteFactory.getSprite(BLOCK_SAD_SPRITE));
     }
 
     public void attack() {

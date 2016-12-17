@@ -4,6 +4,7 @@ import game.environment.abstractObject.common.AbstractCollidable;
 import game.environment.abstractObject.enemy.AbstractEnemy;
 import game.environment.abstractObject.item.AbstractItem;
 import game.environment.abstractObject.player.AbstractPlayer;
+import game.environment.abstractObject.surrounding.platform.AbstractPlatform;
 import game.environment.abstractObject.weapon.AbstractWeapon;
 
 import java.util.ArrayList;
@@ -61,6 +62,9 @@ public class Drawable {
 
     private static synchronized void addToLists(DrawableType type, Object object) {
         switch (type) {
+            case PLATFORM:
+                lists.addPlatform((AbstractPlatform) object);
+                break;
             case ENEMY:
                 lists.addEnemy((AbstractEnemy) object);
                 break;

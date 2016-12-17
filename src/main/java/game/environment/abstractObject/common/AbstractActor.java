@@ -25,4 +25,5 @@ public abstract class AbstractActor extends AbstractCollidable {
     public void setType(ActorType type) {
         this.type = type;
     }
+
 }

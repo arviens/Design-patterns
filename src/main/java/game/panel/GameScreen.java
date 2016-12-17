@@ -13,24 +13,26 @@ import game.command.enemy.zombie.ZombieAttack;
 import game.command.enemy.zombie.ZombieFlee;
 import game.environment.abstractObject.common.AbstractCollidable;
 import game.environment.abstractObject.enemy.AbstractEnemy;
+import game.environment.abstractObject.surrounding.platform.AbstractPlatform;
 import game.environment.object.enemy.BlockMadEnemy;
 import game.environment.object.player.Player;
+import game.environment.object.surrounding.platform.PlatformType;
 import game.environment.object.weapon.BananaWeapon;
+import game.factory.SpriteFactory;
+import game.factory.surrounding.PlatformFactory;
 import util.Drawable;
 import util.DrawableType;
 
 import java.util.List;
 import java.util.Map;
 
+import static game.GameBase.world;
+
 public class GameScreen implements Screen {
     private GameBase gameBase;
     private Texture img;
-    private BodyDef bodyDef;
-    Body body;
     private Player player;
-
-    private World world;
-
+    private PlatformFactory pf;
 
     public GameScreen(final GameBase gameBase) {
         this.gameBase = gameBase;
@@ -39,60 +41,39 @@ public class GameScreen implements Screen {
 
         player = new Player();
         player.addWeapon(new BananaWeapon());
-        player.addWeapon(new BananaWeapon());
-        player.addWeapon(new BananaWeapon());
-        player.addWeapon(new BananaWeapon());
-        player.addWeapon(new BananaWeapon());
-        Box2D.init();
-        world = new World(new Vector2(0, -98f), true);
         Drawable.addToMap(DrawableType.PLAYER, player);
-        this.bodyDef = new BodyDef();
+        pf = new PlatformFactory();
         //music.play();
-        bodyDef.type = BodyDef.BodyType.DynamicBody;
-        bodyDef.position.set(player.getX(), player.getY());
-        body = world.createBody(bodyDef);
-        PolygonShape shape = new PolygonShape();
-        shape.setAsBox(player.getSprite().getWidth() / 2, player.getSprite().getHeight() / 2);
-        FixtureDef fixtureDef = new FixtureDef();
-        fixtureDef.shape = shape;
-        fixtureDef.density = 1f;
 
-        Fixture fixture = body.createFixture(fixtureDef);
 
-        shape.dispose();
     }
 
 
     public void render(float delta) {
         world.step(Gdx.graphics.getDeltaTime(), 6, 2);
-
         Gdx.gl.glClearColor(0, 0, 0.2f, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         gameBase.batch.begin();
 
-        player.setX((int) body.getPosition().x);
-        player.setY((int) body.getPosition().y);
-//        System.out.println(body.getPosition().y);
-//        gameBase.batch.draw(img, bucket.x, bucket.y);
         for (Map.Entry<DrawableType, List<AbstractCollidable>> value : Drawable.getEnvironmentObjects().entrySet()) {
             for (AbstractCollidable collidable : value.getValue()) {
-                gameBase.batch.draw(collidable.getSprite(), collidable.getX(), collidable.getY());
+                gameBase.batch.draw(collidable.getSprite().getSprite(), collidable.getX(), collidable.getY());
                 collidable.move();
             }
         }
 
 
         if (Gdx.input.isKeyJustPressed(Input.Keys.UP)) {
-            body.setLinearVelocity(body.getLinearVelocity().x, 500);
+            player.getBody().setLinearVelocity(player.getBody().getLinearVelocity().x, 500);
         }
         if (Gdx.input.isKeyJustPressed(Input.Keys.DOWN)) {
-            body.setLinearVelocity(body.getLinearVelocity().x, -500);
+            player.getBody().setLinearVelocity(player.getBody().getLinearVelocity().x, -500);
         }
         if (Gdx.input.isKeyJustPressed(Input.Keys.LEFT)) {
-            body.setLinearVelocity(-500, body.getLinearVelocity().y);
+            player.getBody().setLinearVelocity(-500, player.getBody().getLinearVelocity().y);
         }
         if (Gdx.input.isKeyJustPressed(Input.Keys.RIGHT)) {
-            body.setLinearVelocity(500, body.getLinearVelocity().y);
+            player.getBody().setLinearVelocity(500, player.getBody().getLinearVelocity().y);
         }
 
 
@@ -100,20 +81,25 @@ public class GameScreen implements Screen {
             player.shootWeapon();
         }
 
+
+
+        if (Gdx.input.isKeyJustPressed(Input.Keys.P)) {
+            AbstractPlatform plat = pf.getPlatform(PlatformType.DEFAULT);
+            plat.setX(player.getX());
+            plat.setY(player.getY());
+            plat.staticBody();
+            Drawable.addToMap(DrawableType.PLATFORM, plat);
+        }
+
+
         if (Gdx.input.isKeyJustPressed(Input.Keys.A)) {
-            gameBase.commander.notifyObserver(new ZombieAttack());
+            SpriteFactory.changeSprite();
         }
 
         if (Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE)) {
             gameBase.setScreen(new MainMenuScreen(gameBase));
         }
         gameBase.batch.end();
-
-
-//        gameBase.camera.position.set(player.getX(), player.getY(), 0);
-//        gameBase.camera.update();
-
-//        gameBase.batch.setProjectionMatrix(gameBase.camera.combined);
     }
 
 
@@ -140,7 +126,6 @@ public class GameScreen implements Screen {
 
     public void dispose() {
         gameBase.batch.dispose();
-        world.dispose();
         img.dispose();
         System.out.println("disposessss");
     }
