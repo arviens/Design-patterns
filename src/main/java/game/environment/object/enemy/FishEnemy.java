@@ -31,9 +31,9 @@ public class FishEnemy extends AbstractEnemy {
         EnemyControl enemyControl = new EnemyControl(cmd);
         enemyControl.action();
     }
+
     @Override
-    public boolean isNull()
-    {
+    public boolean isNull() {
         return false;
     }
 }

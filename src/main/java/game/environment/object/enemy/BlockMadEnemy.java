@@ -29,13 +29,13 @@ public class BlockMadEnemy extends AbstractEnemy {
     }
 
     public void update(ICommand cmd) {
-            cmd.setEnemy(this);
-            EnemyControl enemyControl = new EnemyControl(cmd);
-            enemyControl.action();
+        cmd.setEnemy(this);
+        EnemyControl enemyControl = new EnemyControl(cmd);
+        enemyControl.action();
     }
+
     @Override
-    public boolean isNull()
-    {
+    public boolean isNull() {
         return false;
     }
 }

@@ -10,9 +10,9 @@ import game.observer.Commander;
 public class EnemyFactory extends AbstractActorFactory {
 
     private Commander commander;
-    public EnemyFactory(Commander commander)
-    {
-        this.commander  = commander;
+
+    public EnemyFactory(Commander commander) {
+        this.commander = commander;
     }
 
     public AbstractEnemy getAbstractEnemy(EnemyType enemyType) {

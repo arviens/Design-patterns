@@ -10,6 +10,13 @@ import game.sound.AbstractSound;
 public abstract class AbstractWeapon extends AbstractCollidable {
     private AbstractSound shootingSound;
     private int damage;
+    private long droppedTime;
+    //What kind of enhancement actor will give to user
+    private Enhancement enhancement;
+    //What kind of influence
+    private int influence;
+    private AbstractSound pickUpSound;
+    private String name;
 
     public AbstractSound getShootingSound() {
         return shootingSound;
@@ -35,20 +42,6 @@ public abstract class AbstractWeapon extends AbstractCollidable {
         this.damage = damage;
     }
 
-
-
-
-
-
-    private long droppedTime;
-    //What kind of enhancement actor will give to user
-    private Enhancement enhancement;
-    //What kind of influence
-    private int influence;
-    private AbstractSound pickUpSound;
-
-    private String name;
-
     public long getDroppedTime() {
         return droppedTime;
     }
@@ -65,7 +58,6 @@ public abstract class AbstractWeapon extends AbstractCollidable {
         this.influence = influence;
     }
 
-
     public String getName() {
         return name;
     }
@@ -73,9 +65,4 @@ public abstract class AbstractWeapon extends AbstractCollidable {
     public void setName(String name) {
         this.name = name;
     }
-
-
-
-
-
 }

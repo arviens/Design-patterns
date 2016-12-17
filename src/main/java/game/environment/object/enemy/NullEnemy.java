@@ -11,7 +11,6 @@ import game.observer.Commander;
  * Created by kalafioras on 2016-12-17.
  */
 public class NullEnemy extends AbstractEnemy {
-    private final static String BLOCK_SAD_SPRITE = "src/main/resources/assets/sprites/enemies/blockerSad.png";
 
     public NullEnemy(Commander commander) {
         super(commander);
@@ -22,8 +21,7 @@ public class NullEnemy extends AbstractEnemy {
     }
 
     @Override
-    public boolean isNull()
-    {
+    public boolean isNull() {
         return true;
     }
 
@@ -33,11 +31,9 @@ public class NullEnemy extends AbstractEnemy {
 
     public void flee() {
         System.out.println("Operation not suported");
-
     }
 
     public void follow() {
         System.out.println("Operation not suported");
-
     }
 }

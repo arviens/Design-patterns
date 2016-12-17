@@ -13,9 +13,9 @@ public class YellowGemItem extends AbstractItem {
         setEnhancement(Enhancement.HEALTH);
         setPrice(256);
     }
+
     @Override
-    public boolean isNull()
-    {
+    public boolean isNull() {
         return false;
     }
 }

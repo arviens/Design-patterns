@@ -6,10 +6,6 @@ import game.environment.object.item.*;
 import game.environment.object.weapon.PistolWeapon;
 import game.environment.object.weapon.WeaponType;
 
-import static game.environment.object.weapon.WeaponType.BANANA;
-import static game.environment.object.weapon.WeaponType.BUMERANG;
-import static game.environment.object.weapon.WeaponType.PISTOL;
-
 public class WeaponFactory extends AbstractObjectFactory {
 
     public AbstractItem getAbstractItem(ItemType itemType) {
@@ -17,7 +13,7 @@ public class WeaponFactory extends AbstractObjectFactory {
     }
 
     public AbstractWeapon getAbstractWeapon(WeaponType weaponType) {
-
+        //TODO Null object dp
         switch (weaponType) {
             case BANANA:
                 return new BananaWeapon();
