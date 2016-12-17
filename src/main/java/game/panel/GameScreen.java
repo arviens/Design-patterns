@@ -15,6 +15,7 @@ import game.environment.abstractObject.common.AbstractCollidable;
 import game.environment.abstractObject.enemy.AbstractEnemy;
 import game.environment.object.enemy.BlockMadEnemy;
 import game.environment.object.player.Player;
+import game.environment.object.weapon.BananaWeapon;
 import util.Drawable;
 import util.DrawableType;
 
@@ -37,6 +38,11 @@ public class GameScreen implements Screen {
         img = new Texture("assets/images/batman.png");
 
         player = new Player();
+        player.addWeapon(new BananaWeapon());
+        player.addWeapon(new BananaWeapon());
+        player.addWeapon(new BananaWeapon());
+        player.addWeapon(new BananaWeapon());
+        player.addWeapon(new BananaWeapon());
         Box2D.init();
         world = new World(new Vector2(0, -98f), true);
         Drawable.addToMap(DrawableType.PLAYER, player);
@@ -90,8 +96,8 @@ public class GameScreen implements Screen {
         }
 
 
-        if (Gdx.input.isKeyJustPressed(Input.Keys.F)) {
-            gameBase.commander.notifyObserver(new ZombieFlee());
+        if (Gdx.input.isKeyJustPressed(Input.Keys.O)) {
+            player.shootWeapon();
         }
 
         if (Gdx.input.isKeyJustPressed(Input.Keys.A)) {

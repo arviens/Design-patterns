@@ -9,7 +9,7 @@ import util.DrawableType;
 import java.util.Random;
 
 
-public class FollowPlayer extends AbstractCollidable implements IAlgorithm {
+public class FollowPlayer implements IAlgorithm {
     public void move(AbstractCollidable object) {
         AbstractCollidable player = Drawable.getByType(DrawableType.PLAYER).get(0);
         int deltaX = object.getX() - player.getX();
@@ -36,5 +36,9 @@ public class FollowPlayer extends AbstractCollidable implements IAlgorithm {
         if (deltaY < 0) {
             object.setY(object.getY() + Math.round(speed * Gdx.graphics.getDeltaTime() * ratioY));
         }
+    }
+
+    public boolean isNull() {
+        return false;
     }
 }

@@ -47,8 +47,9 @@ public abstract class AbstractCollidable {
         return algorithm;
     }
 
-    public void move(){
-        if(algorithm != null) {
+    public void move() {
+        //TODO Add null object dp
+        if (algorithm != null) {
             algorithm.move(this);
         }
     }
@@ -64,5 +65,6 @@ public abstract class AbstractCollidable {
     public void setPrice(int price) {
         this.price = price;
     }
+
     public abstract boolean isNull();
 }

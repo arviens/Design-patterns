@@ -17,9 +17,14 @@ import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import game.GameBase;
 import game.environment.abstractObject.item.AbstractItem;
+import game.environment.abstractObject.player.AbstractPlayer;
+import game.environment.abstractObject.weapon.AbstractWeapon;
 import game.environment.object.item.HeartItem;
 import game.environment.object.item.ItemType;
 import game.environment.object.item.ShroomItem;
+import game.environment.object.weapon.BananaWeapon;
+import util.Drawable;
+import util.DrawableType;
 import util.GameState;
 import util.ScreenComponentDrawing;
 
@@ -31,9 +36,11 @@ public class ShopScreen extends ScreenComponentDrawing implements Screen {
     final GameBase gameBase;
     private Table table;
     private List<AbstractItem> buyableItems;
+    private List<AbstractWeapon> buyableWeapons;
 
     public ShopScreen(final GameBase gameBase) {
         buyableItems = getBuyableItems();
+        buyableWeapons = getBuyableWeapons();
         this.gameBase = gameBase;
         stage = new Stage();
         skin = new Skin();
@@ -58,14 +65,20 @@ public class ShopScreen extends ScreenComponentDrawing implements Screen {
             table.add(buyButton);
             table.row();
         }
+        for (final AbstractWeapon buyable : buyableWeapons) {
+            Label buyButton = new Label("Buy", skin);
+            buyButton.addListener(new ClickListener() {
+                public void clicked(InputEvent e, float x, float y) {
+                    AbstractPlayer player = Drawable.getLists().getPlayers().get(0);
+                    player.addWeapon(new BananaWeapon());
+                }
+            });
 
-        Label buyButton = new Label("Buy", skin);
-        buyButton.addListener(new ClickListener() {
-            public void clicked(InputEvent e, float x, float y) {
-                gameBase.setGameScreen(GameState.MENU);
-            }
-        });
-        table.add(buyButton);
+            table.add(new Label(buyable.getName(), skin));
+            table.add(new Label(String.valueOf(buyable.getPrice()), skin));
+            table.add(buyButton);
+            table.row();
+        }
 
         stage.addActor(table);
 
@@ -132,6 +145,14 @@ public class ShopScreen extends ScreenComponentDrawing implements Screen {
 
         arr.add(new HeartItem());
         arr.add(new ShroomItem());
+
+        return arr;
+    }
+
+    private List<AbstractWeapon> getBuyableWeapons() {
+        List<AbstractWeapon> arr = new ArrayList<AbstractWeapon>();
+
+        arr.add(new BananaWeapon());
 
         return arr;
     }

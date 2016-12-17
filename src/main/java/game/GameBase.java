@@ -43,9 +43,6 @@ public class GameBase extends Game {
         commander.register(blockMad);
         Drawable.addToMap(DrawableType.ENEMY,blockSad);
         Drawable.addToMap(DrawableType.ENEMY,blockMad);
-        ItemFactory itemFactory = new ItemFactory();
-        Drawable.addToMap(DrawableType.ITEM, itemFactory.getAbstractItem(ItemType.HEART));
-        Drawable.addToMap(DrawableType.ITEM, itemFactory.getAbstractItem(ItemType.HEART_BAD));
 
         GameProperties config = Config.getInstance().getProperties();
         camera = new OrthographicCamera(config.getWidth(), config.getHeight());

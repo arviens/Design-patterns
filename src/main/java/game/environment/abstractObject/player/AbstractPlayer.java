@@ -5,6 +5,12 @@ import game.environment.abstractObject.common.AbstractActor;
 import game.environment.abstractObject.weapon.AbstractWeapon;
 import game.environment.object.player.Keyboard;
 import game.sound.AbstractSound;
+import util.Drawable;
+import util.DrawableType;
+
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * Stores information about player
@@ -12,8 +18,13 @@ import game.sound.AbstractSound;
 public abstract class AbstractPlayer extends AbstractActor {
     private AbstractSound bounceSound;
     private Keyboard keyboard;
-    private AbstractWeapon weapon;
+    private List<AbstractWeapon> weapons;
     private int score;
+
+    public AbstractPlayer() {
+        weapons = new ArrayList<AbstractWeapon>();
+        score = 0;
+    }
 
     public AbstractSound getBounceSound() {
         return bounceSound;
@@ -39,11 +50,20 @@ public abstract class AbstractPlayer extends AbstractActor {
         this.score = score;
     }
 
-    public AbstractWeapon getWeapon() {
-        return weapon;
+    public void addWeapon(AbstractWeapon weapon) {
+        weapons.add(weapon);
     }
 
-    public void setWeapon(AbstractWeapon weapon) {
-        this.weapon = weapon;
+    public boolean shootWeapon() {
+        if (!weapons.isEmpty()) {
+            AbstractWeapon firstWeapon = weapons.get(0);
+            firstWeapon.setX(this.getX());
+            firstWeapon.setY(this.getY());
+            Drawable.addToMap(DrawableType.WEAPON, firstWeapon);
+            weapons.remove(firstWeapon);
+            return true;
+        }
+
+        return false;
     }
 }

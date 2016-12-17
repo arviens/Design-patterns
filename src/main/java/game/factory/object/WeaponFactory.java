@@ -3,7 +3,7 @@ package game.factory.object;
 import game.environment.abstractObject.item.AbstractItem;
 import game.environment.abstractObject.weapon.AbstractWeapon;
 import game.environment.object.item.*;
-import game.environment.object.weapon.PistolWeapon;
+import game.environment.object.weapon.BananaWeapon;
 import game.environment.object.weapon.WeaponType;
 
 public class WeaponFactory extends AbstractObjectFactory {
@@ -17,10 +17,10 @@ public class WeaponFactory extends AbstractObjectFactory {
         switch (weaponType) {
             case BANANA:
                 return new BananaWeapon();
-            case PISTOL:
-                return new PistolWeapon();
-            case BUMERANG:
-                return new BumerangWeapon();
+//            case PISTOL:
+//                return new PistolWeapon();
+//            case BUMERANG:
+//                return new BumerangWeapon();
 
         }
         return null;

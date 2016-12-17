@@ -4,6 +4,7 @@ import game.environment.abstractObject.common.AbstractCollidable;
 import game.environment.abstractObject.enemy.AbstractEnemy;
 import game.environment.abstractObject.item.AbstractItem;
 import game.environment.abstractObject.player.AbstractPlayer;
+import game.environment.abstractObject.weapon.AbstractWeapon;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -68,6 +69,9 @@ public class Drawable {
                 break;
             case ITEM:
                 lists.addItem((AbstractItem) object);
+                break;
+            case WEAPON:
+                lists.addWeapon((AbstractWeapon) object);
                 break;
         }
     }

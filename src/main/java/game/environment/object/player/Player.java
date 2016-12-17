@@ -11,4 +11,8 @@ public class Player extends AbstractPlayer {
         setSprite(getSpriteByName(PLAYER_SPRITE));
         setAlgorithm(new PlayerMove());
     }
+
+    public boolean isNull() {
+        return false;
+    }
 }
