@@ -1,14 +1,13 @@
 package game.environment.abstractObject.item;
 
 import game.environment.abstractObject.common.AbstractCollidable;
-import game.environment.abstractObject.common.Buyable;
 import game.environment.object.item.Enhancement;
 import game.sound.AbstractSound;
 
 /**
  * Stores information about actor
  */
-public abstract class AbstractItem extends AbstractCollidable implements Buyable {
+public abstract class AbstractItem extends AbstractCollidable {
 
     private long droppedTime;
     //What kind of enhancement actor will give to user

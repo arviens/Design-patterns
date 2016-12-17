@@ -9,7 +9,6 @@ import game.command.IEnemy;
 public class ZombieFlee implements ICommand {
     IEnemy enemy;
 
-
     public ZombieFlee() {
     }
 

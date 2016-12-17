@@ -8,7 +8,7 @@ import game.environment.object.surrounding.platform.PlatformType;
 /**
  * Created by kalafioras on 2016-10-29.
  */
-public class ObstacleFactory {
+public class ObstacleFactory extends AbstractSurroundingFactory {
 
      AbstractObstacle getObstacle(ObstacleType obstacleType)
      {

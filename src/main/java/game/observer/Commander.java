@@ -31,7 +31,6 @@ public class Commander implements ISubject {
     }
 
     public void notifyObserver(EnemyType enemyType, ICommand cmd) {
-        //for()
     }
 
     public void notifyObserver(ICommand cmd) {
